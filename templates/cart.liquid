@@ -97,7 +97,7 @@
 
       <tr>
         <td>
-            <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
+            <img loading="lazy" height="160" width="160" src="{{ item | img_url: '160x160' }}"  alt="{{ item.title | escape }}" />
         </td>
         <td>
               {{ item.title }}
