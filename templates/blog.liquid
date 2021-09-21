@@ -69,7 +69,7 @@
 	<div class="article">
         {% if article.image %}
     <a href="{{ article.url }}">
-      <img src="{{ article.image | img_url: '500x' }}" alt="">
+      <img loading="lazy" height="" width="" src="{{ article.image | img_url: '500x' }}" alt="">
     </a>    
   {% endif %} 
 

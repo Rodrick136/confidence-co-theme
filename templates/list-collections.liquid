@@ -18,7 +18,7 @@
       {% for collection in collections %}
         <li class="{{ collection.handle }}-collection">
           <a href="{{ collection.url }}">
-            <img src="{{ collection.image | img_url: '300x'}}">
+            <img loading="lazy" height="" width="" src="{{ collection.image | img_url: '300x'}}">
         	<h3>{{ collection.title | escape }}</h3>
           </a>
         </li>
