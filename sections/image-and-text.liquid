@@ -1,0 +1,305 @@
+<style>
+  .image-text-block .page-container{
+  	display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .section-{{section.id}}.image-text-block .content{
+    {% if section.settings.image-placement == "0" %}
+    	width: 51%;
+    	text-align: center;
+    {% elsif section.settings.image == blank %}
+    	width: 100%;
+    {% else %}
+  		width: calc(50% - 20px);
+    {% endif %}
+  }
+  .section-{{section.id}}.image-text-block img{
+    order: {{section.settings.image-placement}};
+    width: 50%;
+    {% if section.settings.image-placement == "left" %}
+   		order: 0;
+    	padding-right: 20px;
+    {% elsif section.settings.image-placement == "none" or section.settings.image-placement == "0" %}
+    	padding: 0;
+   		order: 0;
+   		margin-bottom: 20px;
+    {% else %}
+    	order: 2;
+    	padding-left: 20px;
+    {% endif %}
+  }
+  .section-{{section.id}}.image-text-block h2, .section-{{section.id}}.image-text-block p{
+    text-align: left;
+    padding: 20px 0;
+    margin: 0;
+    {% if section.settings.image-placement == "0" %}
+    	text-align: center;
+    {% endif %}
+  }
+  .bullets{
+    padding-left: 0;
+  	columns: 2;
+    margin-bottom: 2em;
+  }
+  .bullets li {
+    text-transform: uppercase;
+    list-style: none;
+    display: flex;
+    margin-bottom:10px;
+  }
+  .bullets li::before {
+    content: '';
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    width: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('{{ 'bolt_icon-03.png' | asset_url }}');
+  }
+  
+  .section-{{section.id}}.image-text-block p{
+    {% if section.settings.btn-text != blank %}
+    	margin-bottom: 20px;
+    {% endif %}
+  }
+  .image-text-block h3{
+    margin-top: 0;
+  }
+  .image-text-block p {
+    text-align: left;
+    margin: 0;
+  }
+  .image-text-block .logos{
+  	display: flex;
+    gap: 20px;
+    width: 50%;
+    margin: 3em auto 0;
+    align-items: center;
+  }
+  .image-text-block .logos img{
+  	padding: 0;
+    width: 100%;
+  }
+  @media only screen and (max-width: 600px) {
+    .image-text-block img {
+      width: 100%;
+    }
+    .image-text-block h2 {
+      width: 100%;
+      transform: none;
+      text-align: center;
+    }
+    .image-text-block p {
+    	text-align: center;
+    }
+  }
+</style>
+
+<div class="section section-{{section.id}} image-text-block {{section.settings.text-block-style}}">
+  <div class="page-container">
+    {% if section.settings.image != blank %}
+    	<img src="{{section.settings.image | img_url: '1024x' }} ">
+    {% endif %}
+    <div class="content">
+      <h3>{{section.settings.pre-title}}</h3>
+      <{{section.settings.header-size}} class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</{{section.settings.header-size}}>
+      {% if section.settings.body != blank %}
+      	{{section.settings.body}}
+      {% endif %}
+      {% assign bullet_blocks = section.blocks  | where: 'type', 'bullets'%}
+      <ul class="bullets">
+      {% for block in bullet_blocks%}
+      	<li><strong>{{block.settings.bullet}}<strong></li>
+      {% endfor %}
+      </ul>
+      {% if section.settings.btn-text != blank%}
+          <a class="btn" href="{{section.settings.btn-url}}">{{section.settings.btn-text}}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% if section.settings.enable-logos %}
+	<div class="logos">
+      <div class="section_logo_c logo_line_0">
+        <p style="width: 75px;">AS SEEN IN</p>
+      </div>
+      {% assign allLogos = section.blocks  | where: 'type', 'logo'%}
+      {% for block in allLogos %}
+          {% unless block.type contains "logo" %}{% continue %}{% endunless %}
+          <div class="section_logo_c logo_line_{{ i }}">
+            <a href="{{ block.settings.url }}">
+              <div class="logo_image">
+                <img 
+                  class="featured_logo_image" 
+                  loading="lazy" 
+                  alt="{{ block.settings.logo_image.alt | strip }}"
+                  {% if block.settings.logo_image %}
+                    src="{{ block.settings.logo_image | img_url: 'master' }}"
+                  {% else %}
+                    src="{{ settings.logo | img_url: 'x50' }}"
+                  {% endif %}
+                />
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+	</div>
+  {% endif %}
+
+</div>
+
+{% schema %}
+{
+"name": "Image + Text",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+       "type": "select",
+       "id": "image-placement",
+       "label": "Image Placement",
+       "options": [
+         {
+           "value": "1",
+           "label": "Left"
+         },
+         {
+           "value": "2",
+           "label": "Right"
+         },
+         {
+           "value": "0",
+           "label": "None"
+         }
+       ],
+       "default": "1"
+    },
+	{
+       "type": "select",
+       "id": "header-size",
+       "label": "Header Size",
+       "options": [
+         {
+           "value": "h1",
+           "label": "h1"
+         },
+         {
+           "value": "h2",
+           "label": "h2"
+         },
+         {
+           "value": "h3",
+           "label": "h3"
+         }
+       ],
+       "default": "h2"
+    },
+	{
+	   "type": "image_picker",
+       "id": "image",
+       "label": "Image"
+	},
+	{
+	   "type": "text",
+       "id": "pre-title",
+       "label": "Pre Header",
+	   "default": "ALL NATURAL DIGESTIVE ENZYME"
+	},
+	{
+	   "type": "text",
+       "id": "title",
+       "label": "Heading",
+	   "default": "Catchy heading goes here!"
+	},
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    },
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body Text"
+	},
+	{
+	   "type": "richtext",
+       "id": "bullets",
+       "label": "Bullet HTML"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Button Text"
+	},
+	{
+	   "type": "url",
+       "id": "btn-url",
+       "label": "Button Url"
+	},
+	{
+	   "type": "checkbox",
+       "id": "enable-logos",
+       "label": "Enable Logos"
+	}
+],
+"blocks": [
+  {
+    "type": "logo",
+    "name": "Logo",
+		"settings": [
+			{
+   			"type": "image_picker",
+   			"id": "logo_image",
+   			"label": "Logo Image"
+			},
+			{
+	    		"type": "url",
+        		"id": "url",
+        		"label": "Url",
+	    		"default": "/"
+			}
+		]
+  },
+  {
+    "type": "bullets",
+    "name": "Bullets",
+		"settings": [
+			{
+   			"type": "text",
+   			"id": "bullet",
+   			"label": "Bullet"
+			}
+		]
+  }
+],
+"presets": [
+{
+"name": "Image + Text",
+"category": "Text"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

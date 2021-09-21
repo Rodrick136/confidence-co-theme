@@ -1,0 +1,218 @@
+<style>
+  #product .page-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10em 0;
+  }
+  #product .page-container form{
+  	margin-left: 4em;
+    width: 50%;
+  }
+  #product .page-container h6{
+  	margin: 0;
+  }
+/*   #product div span{
+  	font-family: 'Hatton', serif !Important;
+  } */
+  #product h1{
+  	margin-bottom: 20px;
+  }
+  #product .btn{
+  	border: none !important;
+  }
+  #product .page-container .product-slider .slide{
+  	display: flex;
+    justify-content: center;
+  }
+  #product .product-slider{
+  	margin-bottom: 2em;
+  }
+  .product-images{
+  	width: calc(50% - 4em);
+  }
+  .slider-nav .slide{
+  	height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .slide img{
+  	max-width: 100%;
+  }
+  #product .slick-arrow:before{
+  	color: #1a2f28;
+  }
+  
+  
+  @media only screen and (max-width: 750px) {
+    #product .page-container{
+      padding: 5em 0;
+      display: block;
+    }
+    .product-images, #product .page-container form{
+    	width: 90%;
+        margin: auto;
+    }
+    #product h1{
+    	font-size: 38px;
+    }
+    #product h1, #product h3, #product p, #product #product-add{
+    	text-align: center;
+    }
+    #product #add{
+    	margin: auto;
+    }
+    
+  }
+</style>
+
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+
+<div id="product" class="secondary" itemscope itemtype="http://schema.org/Product">
+  <div class="page-container">
+  
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+  <meta itemprop="image" content="{{ product | img_url: 'grande' }}" />
+  
+  <div class="product-images">
+    {% if product.images.size == 0 %}
+  
+      <img src="{{ '' | img_url: 'grande' }}" alt="" />
+    
+    {% else %}
+    
+    <div class="product-slider">
+      {% for image in product.images %}
+        <div class="slide">
+             <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+        </div>
+      {% endfor %}
+  	</div>
+    <div class="slider-nav">
+      {% for image in product.images %}
+        <div class="slide">
+             <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  
+  <form action="/cart/add" method="post" enctype="multipart/form-data">
+    
+    
+      <h1>{{ product.title }}</h1>
+      <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+        {% if product.available %}
+        <link itemprop="availability" href="http://schema.org/InStock" />
+        {% else %}
+        <link itemprop="availability" href="http://schema.org/OutOfStock" />
+        {% endif %}
+        <h3>
+          {% assign variant = product.selected_or_first_available_variant %}
+          {% if product.compare_at_price > product.price %}
+          <span class="product-price on-sale" itemprop="price">{{ variant.price | money }}</span>
+          <span class="product-compare-price">{{ variant.compare_at_price | money }}</span>
+          {% else %}
+          <span class="product-price" itemprop="price">{{ variant.price | money }}</span>
+          {% endif %}
+        </h3>
+      </div>
+      
+      {% assign product_vendor_handle = product.vendor | handle %}
+      {% comment %}
+      Do we have a collection that has the same name as our product vendor name?
+      If we do, let's have the vendor link point to it.
+      If not, we will point to the automatic vendor collection.
+     
+      {% if collections[product_vendor_handle].handle == product_vendor_handle %}
+        {% assign vendor_url = collections[product_vendor_handle].url %}
+      {% else %}
+        {% assign vendor_url = product.vendor | url_for_vendor %}
+      {% endif %}
+      <h6 itemprop="brand">{{ product.vendor }}</h6>
+     {% endcomment %}
+      
+      <div itemprop="description">
+        {{ product.description }}
+      </div>
+      
+      {% comment %}
+        All themes by Shopify should support the Product Reviews app out of the box.
+        https://apps.shopify.com/product-reviews
+      {% endcomment %}
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+      
+      
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}       
+
+      <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+        <select id="product-select" name="id">
+        {% for variant in product.variants %}
+          <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money }}
+          </option>
+        {% endfor %}
+        </select>
+      </div>        
+             
+      <div id="backorder" class="hidden">
+        <p>{{ '%s is back-ordered. We will ship it separately in 10 to 15 days.' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+      </div>
+        
+      <div id="product-add">
+        <input type="submit" class="btn" name="add" id="add" value="{{ add_to_cart | escape }}">
+      </div>
+      
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+        <div>     
+        {% if collection.previous_product %}
+          {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+          <span class="left">{{ 'Previous Product' | link_to: prev_url }}</span>
+        {% endif %}
+        {% if collection.next_product %}
+          {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+          <span class="right">{{ 'Next Product' | link_to: next_url }}</span>
+        {% endif %}
+        </div>
+        {% endif %}
+      {% endif %}
+
+  </form>
+  </div>
+</div>
+
+{% comment %}
+  Adding support for product options. See here for details:  
+  http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+  
+<script>
+$(document).ready(function(){
+  $('.product-slider').slick({
+  	slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav'
+  });
+  
+  $('.slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.product-slider',
+    focusOnSelect: true
+  });
+  
+});
+</script>
+  
+  
+  

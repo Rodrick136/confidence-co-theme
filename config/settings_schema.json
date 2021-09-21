@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Site Identity",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Logo",
+        "id": "logo"
+      },
+      {
+        "type": "image_picker",
+        "label": "Footer Logo",
+        "id": "footer-logo"
+      },
+      {
+        "type": "image_picker",
+        "label": "Favicon",
+        "id": "favicon"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "label": "Primary Background Color",
+        "id": "primary_background_color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Background Color",
+        "id": "secondary-background-color"
+      },
+      {
+        "type": "color",
+        "label": "Border Color",
+        "id": "border-color"
+      }
+    ]
+  },
+  {
+    "name": "Fonts",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headers"
+      },
+      {
+        "type": "font_picker",
+        "label": "Header Font",
+        "id": "header-font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "h1-size",
+        "label": "H1 Size",
+        "default": 72,
+        "min": 20,
+        "max": 80,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "h2-size",
+        "label": "H2 Size",
+        "default": 72,
+        "min": 20,
+        "max": 80,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "h3-size",
+        "label": "H3 Size",
+        "default": 48,
+        "min": 20,
+        "max": 80,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "header-line-height",
+        "label": "Header Line Height",
+        "default": 3,
+        "min": 1,
+        "max": 9,
+        "step": 1
+      },
+      {
+        "type": "font_picker",
+        "label": "Sub-Header Font",
+        "id": "sub-header-font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "h4-size",
+        "label": "H4 Size",
+        "default": 18,
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "h5-size",
+        "label": "H5 Size",
+        "default": 18,
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "h6-size",
+        "label": "H6 Size",
+        "default": 18,
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "label": "Primary Header Color",
+        "id": "primary-header-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Header Color",
+        "id": "secondary-header-color"
+      },
+      {
+        "type": "color",
+        "label": "Alternative Header Color",
+        "id": "alt-header-color"
+      },
+      {
+        "type": "header",
+        "content": "Paragraphs"
+      },
+      {
+        "type": "font_picker",
+        "label": "Paragraph Font",
+        "id": "paragraph-font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "body-size",
+        "label": "Body Size",
+        "default": 18,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "body-line-height",
+        "label": "Body Line Height",
+        "default": 3,
+        "min": 1,
+        "max": 9,
+        "step": 1
+      },
+      {
+        "type": "color",
+        "label": "Primary Paragraph Color",
+        "id": "primary-paragraph-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Paragraph Color",
+        "id": "secondary-paragraph-color"
+      },
+      {
+        "type": "color",
+        "label": "Primary Link Color",
+        "id": "primary-link"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Link Color",
+        "id": "secondary-link"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "font_picker",
+        "label": "Button Font",
+        "id": "btn-font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "btn-size",
+        "label": "Button Size",
+        "default": 18,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "label": "Primary Button Color",
+        "id": "primary-btn-color"
+      },
+      {
+        "type": "color",
+        "label": "Primary Text Color",
+        "id": "primary-btn-text-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Button Color",
+        "id": "secondary-btn-color"
+      },
+      {
+        "type": "color",
+        "label": "Secondary Text Color",
+        "id": "secondary-btn-text-color"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "url",
+        "label": "Facebook URL",
+        "id": "facebook"
+      },
+      {
+        "type": "url",
+        "label": "Instagram URL",
+        "id": "instagram"
+      },
+      {
+        "type": "url",
+        "label": "Twitter URL",
+        "id": "twitter"
+      },
+      {
+        "type": "url",
+        "label": "Pinterest URL",
+        "id": "pinterest"
+      },
+      {
+        "type": "url",
+        "label": "Tiktok URL",
+        "id": "tiktok"
+      },
+      {
+        "type": "url",
+        "label": "Youtube URL",
+        "id": "youtube"
+      }
+    ]
+  }
+]

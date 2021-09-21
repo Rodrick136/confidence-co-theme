@@ -1,0 +1,71 @@
+<style>
+  .instagram-block h2, .instagram-block h4, .instagram-block p, .instagram-block a, .instagram-block{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .instagram-block h4{
+  	margin-bottom: 50px !important;
+    width: 80%;
+    max-width: 600px;
+  }
+  .instagram-block h2{
+  	margin-bottom: 25px;
+  }
+  
+  .instagram-block p{
+  	width: 80%;
+    max-width: 600px;
+  }
+  .instagram-block .btn{
+  	margin-top: 50px;
+  }
+</style>
+
+<div class="section instagram-block {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="page-container">
+    <h6>{{section.settings.follow-text}}</h6>
+  </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Insgram Grid",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+	   "type": "text",
+       "id": "follow-text",
+       "label": "Follow Header"
+	}
+],
+"presets": [
+{
+"name": "Instagram Block",
+"category": "Custom"
+}
+]
+}
+{% endschema %}
+
+
+
+
+{% javascript %}
+{% endjavascript %}

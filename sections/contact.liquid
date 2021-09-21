@@ -1,0 +1,155 @@
+<style>
+  .contact-block h2, .contact-block h4, .contact-block p, .contact-block a, .contact-block{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .contact-block h4{
+  	margin-bottom: 50px !important;
+    width: 80%;
+    max-width: 600px;
+  }
+  .contact-block h2{
+  	margin-bottom: 25px;
+  }
+  
+  .contact-block p{
+  	width: 80%;
+    max-width: 600px;
+  }
+  
+  .contact-block .form-vertical{
+  	margin-top: 3em;
+  }
+  {% if section.settings.remove-padding == true %}
+  .contact-block{
+  	padding-top: 0 !Important;
+  }
+  .contact-block h2{
+  	margin-top: 0 !important;
+  }
+  {% endif %}
+</style>
+
+<div class="section contact-block {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="page-container">
+    {% if section.settings.sub-header != blank %}
+   	 <h4>{{section.settings.sub-header}}</h4>
+    {% endif %}
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
+    {{section.settings.body}}
+    <div class="contact-form form-vertical">
+        {%- assign formId = 'ContactForm' -%}
+        {% form 'contact', id: formId %}
+
+          <div class="grid grid--half-gutters">
+            <div class="grid__item medium-up--one-half">
+              <label class="visually-hidden" for="{{ formId }}-name">Name:</label>
+              <input placeholder="name" type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+            </div>
+            <div class="grid__item medium-up--one-half">
+              <label class="visually-hidden" for="{{ formId }}-email">Email <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="{{ formId }}-email"
+                name="contact[email]"
+                autocorrect="off"
+                placeholder="email"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {%- if form.errors contains 'email' -%}
+                  class="input--error"
+                  aria-invalid="true"
+                  aria-describedby="{{ formId }}-email-error"
+                {%- endif -%}
+                >
+              {%- if form.errors contains 'email' -%}
+                <span id="{{ formId}}-email-error" class="input-error-message">
+                  <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                  <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <label class="visually-hidden" for="{{ formId }}-phone">Phone</label>
+          <input type="tel" placeholder="phone" id="{{ formId }}-phone" name="contact[{{ 'Phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+          <label class="visually-hidden" for="{{ formId }}-message">Message</label>
+          <textarea rows="10" placeholder="message" id="{{ formId }}-message" name="contact[message]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+          <input type="submit" class="btn" value="{{section.settings.btn-text}}">
+
+        {% endform %}
+      </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Contact",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+       "type": "checkbox",
+       "id": "remove-padding",
+       "label": "This section is the same color as the previous section."
+    },
+	{
+	   "type": "text",
+       "id": "title",
+       "label": "Header",
+	   "default": "Questions, Comments, Inquires?"
+	},
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    },
+	{
+	   "type": "text",
+       "id": "sub-header",
+       "label": "Sub Header"
+	},
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Submit Text"
+	}
+],
+"presets": [
+{
+"name": "Contact",
+"category": "Text"
+}
+]
+}
+{% endschema %}
+
+
+
+
+{% javascript %}
+{% endjavascript %}

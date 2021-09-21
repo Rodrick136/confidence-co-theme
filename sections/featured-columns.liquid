@@ -1,0 +1,215 @@
+<style>
+  .featured-block h2, .featured-block h4, .featured-block p, .featured-block a, .featured-block{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .featured-block .featured p, .featured-block .featured li{
+  	text-align: left;
+    margin: 20px 0 !important;
+  }
+  
+  .featured-block h2{
+  	margin-bottom: 50px !important;
+    width: 100%;
+    max-width: 600px;
+  }
+  .featured-block h2{
+  	margin-bottom: 25px;
+  }
+  
+  .featured-block p{
+  	width: 80%;
+    max-width: 600px;
+  }
+  
+  .featured-block .form-vertical{
+  	margin-top: 3em;
+  }
+  
+  .featured-container{
+  	display: flex;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    gap: 30px;
+  }
+  .featured{
+  	width: calc(33% - 20px);
+    margin-top: 5em;
+  }
+  .featured:last-of-type{
+  	margin-right: 0 !important;
+  }
+  
+  .featured-block img{
+  	max-width: 100%;
+  }
+  
+  .featured-block h4{
+  	margin-bottom: 0 !important;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .featured-block h6{
+  	margin: 20px auto;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .featured {
+      width: 100%;
+      margin-right: 0px;
+    }
+    .featured-block p{
+    	width: 100%;
+    }
+  }
+</style>
+
+<div id="featured" class="section featured-block {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="page-container">
+    <h6>{{section.settings.sub-header}}</h6>
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
+    {{section.settings.body}}
+    <div class="featured-container">
+    {% for block in section.blocks %}
+      {%assign product = all_products[block.settings.featured-product]%}
+    	<div class="featured">
+          <h3>{{block.settings.title}}</h3>
+          <h6>{{block.settings.sub-title}}</h6>
+          <div id="block-{{block.id}}">
+            {% for image in product.images %}
+            	<div class="slide">
+            		<img src="{{image | img_url: '1024x' }}">
+            	</div>
+            {% endfor %}
+          </div>
+          
+          <h4>{{product.price | money}}</h4>
+          {% if block.settings.description != blank %}
+          	{{block.settings.description}}
+          {% else %}
+          	{{product.description}}
+          {% endif %}
+          <a class="btn" href="/cart/add?id={{product.selected_or_first_available_variant.id}}">add to cart</a>
+    	</div>
+        <script>
+          $(document).ready(function(){
+            $('#block-{{block.id}}').slick({
+              arrows: false,
+              dots: true,
+              adaptiveHeight: true
+              });
+          });
+      	</script>
+        <style>
+          #block-{{block.id}} .slide{
+          	padding: 0;
+          }
+          .slick-dots li button:before{
+          	font-size: 20px;
+            color: #1a2f28;
+          }
+          .slick-dots{
+          	bottom: -50px;
+          }
+          .slick-dotted.slick-slider{
+          	margin-bottom: 50px;
+          }
+        </style>
+    {% endfor %}
+    </div>
+    </div>
+  </div>
+
+
+
+{% schema %}
+{
+"name": "Featured Columns",
+"max_blocks": 20,
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+	   "type": "text",
+       "id": "title",
+       "label": "Header",
+	   "default": "Questions, Comments, Inquires?"
+	},
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    },
+	{
+	   "type": "text",
+       "id": "sub-header",
+       "label": "Sub Header"
+	},
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Submit Text"
+	}
+],
+"blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+		  {
+            "id": "sub-title",
+            "type": "text",
+            "label": "Sub Title"
+          },
+		  {
+			"id": "featured-product",
+            "type": "product",
+            "label": "Product"
+		  },
+		  {
+			"id": "description",
+            "type": "richtext",
+            "label": "Description"
+		  }
+        ]
+      }
+    ],
+"presets": [
+{
+"name": "Featured Columns",
+"category": "Text"
+}
+]
+}
+{% endschema %}
+
+
+
+
+{% javascript %}
+{% endjavascript %}

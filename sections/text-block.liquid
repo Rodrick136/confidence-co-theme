@@ -1,0 +1,153 @@
+<style>
+  .text-block h1, .text-block h4, .text-block p, .text-block a, .text-block{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .text-block h4{
+  	margin-bottom: 50px !important;
+    width: 80%;
+    max-width: 600px;
+  }
+  .text-block h1{
+  	margin-bottom: 25px;
+  }
+  
+  .text-block p{
+  	width: 80%;
+    max-width: 600px;
+  }
+  .text-block .btn{
+  	margin-top: 50px;
+  }
+  
+  .text-block{
+  	width: calc(100% - 2em);
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  {% if section.settings.videofile %}
+    #shopify-section-{{section.id}}  .text-block {
+      position: relative;
+      width:100%;
+      overflow: hidden;
+    }
+    #shopify-section-{{section.id}} .text-block .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100vh;
+        height:auto;
+        width:auto;
+        z-index: -100;
+    }
+  	#shopify-section-{{section.id}} .text-block, 
+  	#shopify-section-{{section.id}} .text-block .page-container, 
+  	#shopify-section-{{section.id}},
+  	#shopify-section-header header,
+  	#shopify-section-header,
+  	#shopify-section-header div{
+		background: transparent !Important;
+    }
+  @media only screen and (max-width: 600px) {
+    .text-block {
+      padding-top: 3em;
+    }
+  }
+  {% endif %}
+  {% if section.settings.bkground-img %}
+    #shopify-section-{{section.id}} .text-block.photo-bkg{
+      background-image: url("{{section.settings.bkground-img | img_url: '1500x'}}") !important;
+      background-size: cover !important;
+    }
+  {% endif %}
+</style>
+
+<div class="section text-block 
+  {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}
+  {% if section.settings.videofile != blank %}video-bkg{% elsif section.settings.bkground-img != blank%}photo-bkg{% endif %}">
+  {% if section.settings.videofile %}
+    <video class="video" autoplay loop muted playsinline width="100%">
+      <source src="{{ section.settings.videofile }}" type="video/mp4">
+    </video>
+  {% endif %}
+  <div class="page-container">
+    <h6>{{section.settings.sub-header}}</h6>
+    <h1>{{section.settings.header}}</h1>
+    {{section.settings.body}}
+    <a class="btn" href="{{section.settings.btn-url}}">{{section.settings.btn-text}}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Text Block",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+	   "type": "text",
+       "id": "header",
+       "label": "Header"
+	},
+	{
+	   "type": "text",
+       "id": "sub-header",
+       "label": "Sub Header"
+	},
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Button Text"
+	},
+	{
+	   "type": "url",
+       "id": "btn-url",
+       "label": "Button Url"
+	},
+	{
+	   "type": "image_picker",
+       "id": "bkground-img",
+       "label": "Background Image"
+	},
+	{
+	   "type": "text",
+       "id": "videofile",
+       "label": "Video Link"
+	}
+],
+"presets": [
+{
+"name": "Text Block",
+"category": "Text"
+}
+]
+}
+{% endschema %}
+
+
+
+
+{% javascript %}
+{% endjavascript %}

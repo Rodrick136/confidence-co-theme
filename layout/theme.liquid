@@ -1,0 +1,101 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->  
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+
+  <title>
+  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <link rel="icon" 
+      type="image/png" 
+      href="{{settings.favicon | img_url: 'small'}}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  {% include 'open-graph-tags' %}
+  {% include 'twitter-card' %}
+
+  {{ content_for_header }}
+
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+  {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  <![endif]-->
+
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% if template contains 'customers' %}  
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+  
+  <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
+  {{ 'shopify_common.js'  | asset_url | script_tag }}
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  <script>jQuery('html').removeClass('no-js').addClass('js');</script>
+  
+  
+  <script src="https://kit.fontawesome.com/73e58ae0b6.js" crossorigin="anonymous"></script>
+
+  <!--Slick Slider-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/bdq8rka.css">
+
+  
+				
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+  
+  {% section 'header' %}
+
+  {% comment %}
+    IE8 and IE9 don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
+    to show and hide the placeholder text.
+    Have a look in assets/shop.js.liquid to see sample JavaScript for this.
+      
+  <form action="/search" method="get" class="search-form right" role="search">
+    <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+    <input type="submit" id="search-submit" value="Search" />
+  </form>
+  {% endcomment %}  
+
+  {% comment %}}
+    We have a template file to render.
+    That's what content_for_layout is for.
+  {% endcomment %}
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {{ 'shop.js'  | asset_url | script_tag }}
+
+{% include 'social-head-common.liquid' %}
+	
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+				
+
+</body>
+
+</html>

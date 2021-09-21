@@ -1,0 +1,170 @@
+<style>
+  .newsletter h2, .newsletter div, .newsletter span{
+    text-align: center;
+  }
+  .newsletter h2{
+  	margin-top: 0;
+  }
+  .newsletter p{
+    margin-bottom: 40px;
+  }
+  .newsletter .input-group{
+    margin: auto;
+  	max-width: 500px;
+    display: Flex;
+    flex-wrap: wrap;
+  }
+  .newsletter .input-group input[type="email"]{
+    width: 100%;
+    height: 50px;
+    margin-bottom:10px;
+    padding-left: 10px;
+  }
+  .newsletter .input-group .input-group__btn, .newsletter .input-group .input-group__btn button{
+    width: 100%;
+  }
+  @media only screen and (max-width: 600px) {
+    .newsletter .input-group {
+      max-width: 100%;
+      display: block;
+    }
+    .newsletter .input-group input[type="email"]{
+    	padding: 15px;
+      	margin-bottom: 10px;
+    }
+    .newsletter .input-group input[type="email"]{
+    	width: calc(100% - 32px);
+    }
+    .newsletter button[type="submit"]{
+    	width: 100%;
+    }
+    .newsletter .input-group__btn{
+    	margin-left: 0 !important;
+    }
+  }
+
+</style>
+
+<div id="newsletter" class="section newsletter {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="page-container">
+    {% if section.settings.image != blank %}
+    	<img 
+                  class="featured_logo_image" 
+                  loading="lazy"
+                  width: 100px;
+                  alt="{{ section.settings.image.alt | strip }}"
+                  src="{{ section.settings.image | img_url: 'x100' }}"
+                />
+    {% endif %}
+  	{% if section.settings.header != blank %}
+    	<h2>{{section.settings.header}}</h2>
+    {% endif %}
+    {% if section.settings.body != blank %}
+    	{{section.settings.body}}
+    {% endif %}
+    {%- assign formId = 'Contact_' | append: section.id -%}
+    {% form 'customer', id: formId, novalidate: 'novalidate', class: 'contact-form form-single-field' %}
+      {%- if form.posted_successfully? -%}
+        <p class="form-message form-message--success" tabindex="-1" data-form-status>
+          You've been added to the list! Use code LOCAL10 for 10% off your first order.
+        </p>
+      {%- endif -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="input-group {% if form.errors %} input-group--error{% endif %}">
+        <input type="email"
+          name="contact[email]"
+          id="{{ formId }}-email"
+          class="input-group__field{% if form.errors %} input--error{% endif %}"
+          value="{{ form.email }}"
+          placeholder="{{section.settings.placeholder-text}}"
+          aria-label="Email"
+          aria-required="true"
+          autocorrect="off"
+          autocapitalize="off"
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="{{ formId }}-email-error"
+            data-form-status
+          {% endif %}
+          >
+        <span class="input-group__btn">
+          <button type="submit" class="btn" name="commit">
+            <span>{{section.settings.btn-text}}</span>
+          </button>
+        </span>
+      </div>
+      {%- if form.errors contains 'email' -%}
+        <span id="{{ formId }}-email-error" class="input-error-message">
+          <span class="visually-hidden">Error</span>
+          <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+        </span>
+      {%- endif -%}
+      {% if form.posted_successfully? %}
+        <script>
+        window.location = "/pages/thank-you";
+        </script>
+      {% endif %}
+    {% endform %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+"name": "Newsletter",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+	   "type": "image_picker",
+       "id": "image",
+       "label": "Image"
+	},
+	{
+	   "type": "text",
+       "id": "header",
+       "label": "Header",
+	   "default": "Subscribe for 10% off your first purchase!"
+	},
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body",
+		"default": "<p>Learn what yours is telling you with our free Poop Guide!</p>"
+	},
+	{
+	   "type": "text",
+       "id": "placeholder-text",
+       "label": "Placeholder Text",
+	   "default": "email"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Submit Text",
+	   "default": "sign up"
+	}
+],
+"presets": [
+{
+"name": "Newsletter",
+"category": "Specialty"
+}
+]
+}
+{% endschema %}

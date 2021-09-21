@@ -1,0 +1,235 @@
+{% style %}
+#section_{{ section.id }} {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+	padding-top: {{ section.settings.top_padding }}vh;
+	padding-bottom: {{ section.settings.bottom_padding }}vh;
+}
+#section_{{ section.id }} div {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+#section_{{ section.id }} .section_content_c {
+  width: 100%;
+  max-width: {{ section.settings.content_max_width }};
+  margin: 0;
+}
+#section_{{ section.id }} .subheader_text {
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+#section_{{ section.id }} .section_logo_w {
+  {% comment %} padding-top: 20px; {% endcomment %}
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 0;
+}
+#section_{{ section.id }} img {
+  max-width: {{ section.settings.logo_maxwidth | strip }};
+  height: 100%;
+  filter: none;
+}
+
+{% if section.settings.text_style == "primary" %}
+  /* Primary Styles*/
+  #section_{{ section.id }} {
+    background-color: {{ settings.primary_background_color }};
+  }
+{% endif %}
+{% if section.settings.text_style == "secondary" %}
+  /* Secondary Styles */
+  #section_{{ section.id }} {
+    background-color: {{ settings.secondary_background_color }};
+  }
+{% endif %}
+{% if section.settings.alternate-header %}
+/* Alternate Styles*/
+{% endif %}
+{% if section.settings.enable_custom_text_color %}
+    #section_{{ section.id }} * {
+      color: {{ section.settings.text_color }};
+    }
+{% endif %}
+{% if section.settings.enable_custom_button_color %}
+    #section_{{ section.id }} .btn {
+      background-color: {{ section.settings.custom_button_color }};
+    }
+{% endif %}
+{% endstyle %}
+
+<div id="section_{{ section.id }}" class="section {{ section.settings.featured_collections_style | strip }}">
+  <div class="section_content_c">
+    {% if section.settings.header_text != blank %}
+      <div class="header_text">
+        <h2>{{ section.settings.header_text | upcase | strip }}</h2>
+      </div>
+    {% endif %}
+    {% if section.settings.subheader_text != blank %}
+      <div class="subheader_text">
+        <h3>{{ section.settings.subheader_text | strip }}</h3>
+      </div>
+    {% endif %}
+    <div class="section_logo_w "> 
+        {% for block in section.blocks %}
+          {% unless block.type contains "logo" %}{% continue %}{% endunless %}
+          <div class="section_logo_c logo_line_{{ i }}">
+            <a href="{{ block.settings.url }}">
+              <div class="logo_image">
+                <img 
+                  class="featured_logo_image" 
+                  loading="lazy" 
+                  alt="{{ block.settings.logo_image.alt | strip }}"
+                  {% if block.settings.logo_image %}
+                    src="{{ block.settings.logo_image | img_url: 'master' }}"
+                  {% else %}
+                    src="{{ settings.logo | img_url: 'x100' }}"
+                  {% endif %}
+                />
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+    {% if block.settings.btn_text != blank %}
+      <div class="section_post_content_c">
+        <div class="sub_header"><h3>{{ section.settings.sub_header | strip }}</h3></div>
+      </div>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+"name": "Featured Logos",
+"settings": [
+	{
+       "type": "select",
+       "id": "text_style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+   		"type": "text",
+   		"id": "header_text",
+   		"label": "Title Text",
+		"default": "Catchy title Goes here"
+	},
+	{
+   		"type": "text",
+   		"id": "subheader_text",
+   		"label": "Subheader Text"
+	},
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    },
+	{
+       	"type": "checkbox",
+       	"id": "enable_custom_text_color",
+       	"label": "Enable Custom, Text Color"
+    },
+    {
+        "type": "color",
+        "label": "Custom, Text Color",
+        "id": "text_color"
+    },
+	{
+	    "type": "text",
+        "id": "sub_header",
+        "label": "Post-Content Text",
+		"default": "Fancy Post Content text"
+	},
+	{
+       	"type": "checkbox",
+       	"id": "enable_custom_button_color",
+       	"label": "Enable Custom, Button Color"
+    },
+	{
+       	"type": "color",
+       	"id": "custom_button_color",
+       	"label": "Custom, Button Color"
+    },
+    {
+        "type": "text",
+          "id": "logo_maxwidth",
+          "label": "Logo Max-Width",
+          "default": "200px"
+    },
+    {
+        "type": "text",
+          "id": "content_max_width",
+          "label": "Content Max-Width",
+          "default": "1400px"
+    },
+    {
+        "type": "range",
+        "id": "top_padding",
+        "label": "Top Padding",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "unit": "vh"
+    },
+    {
+        "type": "range",
+        "id": "bottom_padding",
+        "label": "Bottom Padding",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "unit": "vh"
+    }
+	],
+"blocks": [
+  {
+    "type": "logo",
+    "name": "Logo",
+		"settings": [
+			{
+   			"type": "image_picker",
+   			"id": "logo_image",
+   			"label": "Logo Image"
+			},
+			{
+	    		"type": "url",
+        		"id": "url",
+        		"label": "Url",
+	    		"default": "/"
+			}
+		]
+  }
+],
+"presets": [
+	{
+		"name": "Logos",
+		"category": "Text"
+	}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

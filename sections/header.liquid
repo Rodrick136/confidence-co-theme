@@ -1,0 +1,143 @@
+<style>
+  #shopify-section-header{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    z-index: 999999;
+  }
+  header a {
+  	text-decoration: none;
+  }
+  header h2, header ul{
+  	margin: 0 !Important;
+  }
+  header{
+  	padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .logo-container{
+  	flex: 1;
+  }
+  header #logo img{
+  	width: 20%;
+    min-width: 200px;
+  }
+  #header_navigation_c {
+  	flex-grow: 1;
+  }
+  #header_navigation_c ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  #header_navigation_c li {
+    list-style-type: none;
+    padding-right: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  /*MOBILE*/
+  @media only screen and (max-width: 600px) {
+    header .socials .social, header .cart-total {
+      display: none;
+    }
+  }
+
+</style>
+
+<header class="{{section.settings.text-block-style}}">
+  <div class="logo-container">
+      {% if settings.logo %}
+      <a id="logo" href="/">
+        {{  settings.logo | img_url: 'grande' | img_tag: shop.name }}
+      </a>
+    {% else %}
+      <a id="site-title" href="/">
+        <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">
+        	{{ shop.name }}
+        </h2>
+      </a>
+    {% endif %}
+  </div>
+  
+  <div id="header_navigation_c">
+    {% render 'site-nav', menu_handle: "main-menu" %}
+  </div>
+  
+  <div class="socials">
+    {% include 'socials' %}
+  </div>
+
+
+    {%comment%}      
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
+      {% else %}
+        {{ 'Log in' | customer_login_link }}
+        {% if shop.customer_accounts_optional %}
+        or {{ 'Create an account' | customer_register_link }}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  	{%endcomment%}
+    
+    {% comment %}
+      It would be nice if the logo was a shop setting, rather than a theme setting.
+      But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
+      Link to the theme settings page of currently published theme will always be:
+      http://www.shopify.com/admin/themes/current/settings.
+      To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
+      Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
+    {% endcomment %}
+
+
+
+    {% comment %}
+      Main Navigation 
+    
+    {% render 'site-nav' %}
+  {% endcomment %}
+
+  </header>
+
+{% schema %}
+{
+"name": "Header",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    }
+],
+"presets": [
+{
+"name": "Header",
+"category": "Header"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,287 @@
+{% style %} 
+  #section_{{ section.id }} {
+    position: relative;
+    margin: 0 auto;
+    padding: {{ section.settings.text_block_padding }}vh 0;
+  }
+  #section_{{ section.id }} div {
+    background-color: transparent;
+    margin: 0 auto;
+  }
+  #section_{{ section.id }} .section_content_c {
+    text-align: center;
+    max-width: {{ section.settings.max_width | strip }};
+  }
+  #section_{{ section.id }} .section_text_c div {
+    text-align: center;
+  }
+  #section_{{ section.id }} .section_text_c > *:not(:first-child) {
+    margin-top: 30px;
+  }
+  #section_{{ section.id }} .section_text_c .body_text {
+    margin-top: 30px;
+    max-width: {{ section.settings.body_max_width | strip }};
+  }
+  #section_{{ section.id }} .header_image img {
+    filter: none;
+  }
+  #section_{{ section.id }} .header_image img{
+	width: 40%;
+  }
+  #section_{{ section.id }} .btn_c {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  #section_{{ section.id }} .btn {
+    display: block;
+    margin: 0;
+  }
+{% if section.settings.text_style == "primary" %}
+  /* Primary Styles*/
+  #section_{{ section.id }} {
+    background-color: {{ settings.primary_background_color }};
+  }
+{% endif %}
+{% if section.settings.text_style == "secondary" %}
+  /* Secondary Styles */
+  #section_{{ section.id }} {
+    background-color: {{ settings.secondary_background_color }};
+  }
+{% endif %}
+{% if section.settings.alternate-header %}
+/* Alternate Styles*/
+{% endif %}
+{% if section.settings.enable_custom_text_color %}
+  #section_{{ section.id }} * {
+    color: {{ section.settings.text_color }};
+  }
+{% endif %}
+{% if section.settings.enable_custom_button_color %}
+  #section_{{ section.id }} .btn {
+    background-color: {{ section.settings.custom_button_color }};
+  }
+{% endif %}
+{% endstyle %}
+
+
+<div id="section_{{ section.id }}" class="section {% if section.settings.featured_collections_style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="section_content_c">
+    <div class="section_text_c">
+      {% if section.settings.header_image != blank %}
+        <div class="header_image">
+          <img loading="lazy" alt="{{ section.settings.header_image.alt }}" src="{{ section.settings.header_image | img_url: 'x700' }}" />
+        </div>
+      {% endif %}
+      {% if section.settings.enable-logos %}
+        <div class="icons">
+          {% for block in section.blocks %}
+              {% unless block.type contains "logo" %}{% continue %}{% endunless %}
+              <div class="section_logo_c logo_line_{{ i }}">
+                <a href="{{ block.settings.url }}">
+                  <div class="logo_image">
+                    <img 
+                      class="featured_logo_image" 
+                      loading="lazy" 
+                      alt="{{ block.settings.logo_image.alt | strip }}"
+                      {% if block.settings.logo_image %}
+                        src="{{ block.settings.logo_image | img_url: 'master' }}"
+                      {% else %}
+                        src="{{ settings.logo | img_url: 'x50' }}"
+                      {% endif %}
+                    />
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+        </div>
+      {% endif %}
+      {% if section.settings.preheader_text != blank %}
+        <div class="preheader_text"><h3>{{- section.settings.preheader_text -}}</h3></div>
+      {% endif %}
+      {% if section.settings.header_text != blank %}
+        <div class="header_text"><h2>{{- section.settings.header_text -}}</h2></div>
+      {% endif %}
+      {% if section.settings.subheader_text != blank %}
+        <div class="subheader_text"><h3>{{- section.settings.subheader_text -}}</h3></div>
+      {% endif %}
+      {% if section.settings.body_text != blank %}
+      <div class="body_text">{{- section.settings.body_text -}}</div>
+      {% endif %}
+      {% if section.settings.btn_text != blank or section.settings.btn_2_text != blank %}
+      <div class="btn_c">
+        {% if section.settings.btn_text != blank %}
+          <a class="btn" href="{{- section.settings.btn_url -}}">{{- section.settings.btn_text -}}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+"name": "Call to Action",
+"settings": [
+	{
+       "type": "select",
+       "id": "text_style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+   		"type": "image_picker",
+   		"id": "header_image",
+   		"label": "Header Image"
+	},
+	{
+   		"type": "text",
+   		"id": "preheader_text",
+   		"label": "Preheader Text"
+	},
+	{
+   		"type": "text",
+   		"id": "header_text",
+   		"label": "Title Text",
+		"default": "Catchy title Goes here"
+	},
+	{
+   		"type": "text",
+   		"id": "subheader_text",
+   		"label": "Subtitle Text",
+		"default": "Catchy title Goes here"
+	},
+	{
+	    "type": "richtext",
+        "id": "body_text",
+        "label": "Body Text",
+		"default": "<p>Fancy Body Text</p>"
+	},
+    {
+        "type": "text",
+          "id": "body_max_width",
+          "label": "Body Max-Width",
+          "default": "650px"
+    },
+	{
+       	"type": "checkbox",
+       	"id": "enable_custom_text_color",
+       	"label": "Enable Custom, Text Color"
+    },
+    {
+        "type": "color",
+        "label": "Custom, Text Color",
+        "id": "text_color"
+    },
+	{
+	    "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+	    "default": "SHOP NOW"
+	},
+	{
+	    "type": "url",
+        "id": "btn_url",
+        "label": "Button Url",
+	    "default": "/collections/all"
+	},
+	{
+	    "type": "text",
+        "id": "btn_2_text",
+        "label": "Button Text",
+	    "default": "SHOP NOW"
+	},
+	{
+	    "type": "url",
+        "id": "btn_2_url",
+        "label": "Button Url",
+	    "default": "/collections/all"
+	},
+	{
+       	"type": "checkbox",
+       	"id": "enable_custom_button_color",
+       	"label": "Enable Custom, Button Color"
+    },
+	{
+       	"type": "color",
+       	"id": "custom_button_color",
+       	"label": "Custom, Button Color"
+    },
+	{
+       	"type": "checkbox",
+       	"id": "enable_custom_button_text_color",
+       	"label": "Enable Custom, Button Text Color"
+    },
+	{
+       	"type": "color",
+       	"id": "custom_button_text_color",
+       	"label": "Custom, Button Text Colorr"
+    },
+    {
+        "type": "text",
+       	"id": "max_width",
+        "label": "Section Max-Width",
+       	"default": "1200px"
+    },
+    {
+        "type": "range",
+        "id": "text_block_padding",
+        "label": "Top and Bottom Padding",
+        "default": 10,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "unit": "vh"
+    },
+	{
+	   "type": "checkbox",
+       "id": "enable-logos",
+       "label": "Enable Logos"
+	}
+],
+"blocks": [
+  {
+    "type": "image",
+    "name": "Image",
+		"settings": [
+			{
+   			"type": "image_picker",
+   			"id": "icon",
+   			"label": "Icon"
+			},
+			{
+	    		"type": "text",
+        		"id": "icon-label",
+        		"label": "Icon Label"
+			}
+		]
+  }
+],
+"presets": [
+	{
+		"name": "Call to Action",
+		"category": "Text"
+	}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

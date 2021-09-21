@@ -1,0 +1,143 @@
+<style>
+  footer{
+  	padding: 10em;
+  }
+  footer h2, footer p{
+  	margin: 0;
+    text-align: center;
+  }
+  
+  footer .socials{
+  	text-align: center;
+  }
+  
+  footer .socials svg{
+  	color: #ED0835 !important;
+  }
+  footer .socials a:last-of-type{
+    margin-right: 0 !important;
+  }
+  footer .terms a{
+  	display: inline-block;
+    color: #7C7C7C;
+    text-transform: uppercase;
+    margin: 20px 10px;
+  }
+  footer .description{
+    width: 40%;
+  	color: #7C7C7C;
+    margin: 0 auto 2em;
+    font-size: 12px;
+  }
+  
+  footer .copyright, footer .copyright a{
+  	text-transform: uppercase;
+    font-size: 10px;
+  }
+  
+  footer .logo-container a{
+  	text-decoration: none;
+  }
+  footer h2, footer p{
+  	margin-bottom: 30px;
+  }
+  footer nav ul{
+  	text-align: center;
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+  
+  footer nav ul li{
+  	display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  footer nav ul li a{
+  	text-decoration: none;
+  }
+  
+  footer #footer-logo img{
+    display: block;
+    margin: auto;
+    width: 250px;
+    margin-bottom: 2em;
+  }
+  @media only screen and (max-width: 600px) {
+    footer {
+      padding: 3em 2em;
+    }
+  }
+</style>
+
+<footer class="{{section.settings.text-block-style}}">
+  <div class="logo-container">
+    {% if settings.footer-logo %}
+      <a id="footer-logo" href="/">
+        {{  settings.footer-logo | img_url: 'grande' | img_tag: shop.name }}
+      </a>
+    {% elsif settings.logo %}
+      <a id="footer-logo" href="/">
+        {{  settings.logo | img_url: 'grande' | img_tag: shop.name }}
+      </a>
+    {% else %}
+    
+      <a id="site-title" href="/">
+        <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">
+        	{{ shop.name }}
+        </h2>
+      </a>
+    {% endif %}
+    
+  </div>
+  {% include 'footer-nav' %}
+  <div class="socials">
+  	{% include 'socials' %}
+  </div>
+  <p class="terms"><a>TERMS & CONDITIONS</a> <a>PRIVACY POLICY</a></p>
+  {% if section.settings.shop-description != blank %}
+  <p class="description"><em>{{section.settings.shop-description}}</em></p>
+  {% endif %}
+  <p class="copyright">
+    Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name }}  | Site By <a target="_blank" rel="nofollow" href="https://www.launchitgirl.com/">Launch It Girl</a>
+  </p>
+</footer>
+
+{% schema %}
+{
+"name": "Footer",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Shop Color"
+    },
+	{
+       "type": "text",
+       "id": "shop-description",
+       "label": "Shop Description"
+    }
+],
+"presets": [
+{
+"name": "Footer",
+"category": "Footer"
+}
+]
+}
+{% endschema %}

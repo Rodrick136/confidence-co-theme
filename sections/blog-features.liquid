@@ -1,0 +1,152 @@
+<style>
+  .featured-blog h2, .featured-blog h4, .featured-blog p, .featured-blog a, .featured-blog{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .featured-blog .featured p, .featured-blog .featured li{
+  	text-align: left;
+    margin: 20px 0 !important;
+  }
+  
+  .featured-blog h2{
+  	margin-bottom: 50px !important;
+    width: 100%;
+    max-width: 600px;
+  }
+  .featured-blog h2{
+  	margin-bottom: 25px;
+  }
+ 
+  .featured-blog .blog-title{
+  	text-transform: uppercase;
+  }
+  .featured-blog .form-vertical{
+  	margin-top: 3em;
+  }
+  
+  .featured-container{
+  	display: flex;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    gap: 30px;
+  }
+  .featured{
+  	width: calc(50% - 15px);
+  }
+  .featured:last-of-type{
+  	margin-right: 0 !important;
+  }
+  
+  .featured-blog img{
+  	max-width: 100%;
+  }
+  
+  .featured-blog h4{
+  	margin-bottom: 0 !important;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .featured-blog h6{
+  	margin: 20px auto;
+  }
+  .featured-blog .more{
+  	text-decoration: none;
+    color: #ED0835;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .featured {
+      width: 100%;
+      margin-right: 0px;
+    }
+    .featured-blog p{
+    	width: 100%;
+    }
+  }
+</style>
+
+<div id="featured" class="section featured-blog {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
+  <div class="page-container">
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
+    <h6>{{section.settings.sub-header}}</h6>
+    {{section.settings.body}}
+    <div class="featured-container">
+    	<div class="featured">
+          <img src="{{blogs.news.articles[0].image | img_url: '1024x' }}">
+          {% assign exp = blogs.news.articles[0].excerpt_or_content  | truncate: 100 %}
+          <p><span class="blog-title">{{blogs.news.articles[0].title}}:</span> {{exp  | strip_html }} <a class="more" href="{{blogs.news.articles[0].url}}">read now »</a></p>
+    	</div>
+      <div class="featured">
+          <img src="{{blogs.podcast.articles[0].image | img_url: '1024x' }}">
+          {% assign pod-exp = blogs.podcast.articles[0].excerpt_or_content  | truncate: 100 %}
+          <p><span class="blog-title">{{blogs.podcast.articles[0].title}}:</span> {{pod-exp  | strip_html }} <a class="more" href="{{blogs.podcast.articles[0].url}}">listen now »</a></p>
+    	</div>
+
+    </div>
+    </div>
+  </div>
+
+
+
+{% schema %}
+{
+"name": "Featured Columns",
+"settings": [
+	{
+       "type": "select",
+       "id": "text-block-style",
+       "label": "Style",
+       "options": [
+         {
+           "value": "primary",
+           "label": "Primary"
+         },
+         {
+           "value": "secondary",
+           "label": "Secondary"
+         }
+       ],
+       "default": "primary"
+    },
+	{
+	   "type": "text",
+       "id": "title",
+       "label": "Header",
+	   "default": "Questions, Comments, Inquires?"
+	},
+	{
+       "type": "checkbox",
+       "id": "alternate-header",
+       "label": "Enable Alternative Header Color"
+    },
+	{
+	   "type": "text",
+       "id": "sub-header",
+       "label": "Sub Header"
+	},
+	{
+	   "type": "richtext",
+       "id": "body",
+       "label": "Body"
+	},
+	{
+	   "type": "text",
+       "id": "btn-text",
+       "label": "Submit Text"
+	}
+],
+"presets": [
+{
+"name": "Featured Columns",
+"category": "Text"
+}
+]
+}
+{% endschema %}
+
+
+
+
+{% javascript %}
+{% endjavascript %}
