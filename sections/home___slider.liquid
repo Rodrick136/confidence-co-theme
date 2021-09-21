@@ -62,8 +62,8 @@
 
 <div id="home___slider" class="section {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
   <div class="page-container">
-    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
-    <p>{{section.settings.sub-title}}</p>
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</h2>
+    <p>{{ section.settings.sub-title }}</p>
     <div class="slider">
       {% for block in section.blocks %}
         <div class="slide">
@@ -77,8 +77,8 @@
             </video>
           {% endif %}
           <div class="text-content">
-            <h2>{{block.settings.title}}</h2>
-            {{block.settings.text}}
+            <h2>{{ block.settings.title }}</h2>
+            {{ block.settings.text }}
           </div>
         </div>
       {% endfor %}

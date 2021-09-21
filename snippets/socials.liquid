@@ -18,36 +18,36 @@
 
   {% if settings.facebook != blank %}
 	<a class="social" href="{{settings.facebook}}" target="_blank">
-        {% include 'facebook' %}
+        {% render 'facebook' %}
     </a>
   {% endif %}
   {% if settings.instagram != blank %}
 	<a class="social" href="{{settings.instagram}}" target="_blank">
-      {% include 'instagram' %}
+      {% render 'instagram' %}
     </a>
   {% endif %}
   {% if settings.twitter != blank %}
 	<a class="social" href="{{settings.twitter}}" target="_blank">
-      {% include 'twitter' %}
+      {% render 'twitter' %}
 	</a>
   {% endif %}
   {% if settings.pinterest != blank %}
 	<a class="social" href="{{settings.pinterest}}" target="_blank">
-      {% include 'pinterest' %}
+      {% render 'pinterest' %}
 	</a>
   {% endif %}
   {% if settings.youtube != blank %}
 	<a class="social" href="{{settings.youtube}}" target="_blank">
-      {% include 'youtube' %}
+      {% render 'youtube' %}
 	</a>
   {% endif %}
   {% if settings.tiktok != blank %}
 	<a class="social" href="{{settings.tiktok}}" target="_blank">
-      {% include 'tiktok' %}
+      {% render 'tiktok' %}
 	</a>
   {% endif %}
   {% if settings.email != blank %}
 	<a class="social" href="mailto:{{settings.email}}" target="_blank">
-      {% include 'email' %}
+      {% render 'email' %}
 	</a>
   {% endif %}

@@ -36,8 +36,8 @@
     {% if section.settings.sub-header != blank %}
    	 <h4>{{section.settings.sub-header}}</h4>
     {% endif %}
-    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
-    {{section.settings.body}}
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</h2>
+    {{ section.settings.body }}
     <div class="contact-form form-vertical">
         {%- assign formId = 'ContactForm' -%}
         {% form 'contact', id: formId %}
@@ -79,7 +79,7 @@
           <label class="visually-hidden" for="{{ formId }}-message">Message</label>
           <textarea rows="10" placeholder="message" id="{{ formId }}-message" name="contact[message]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
 
-          <input type="submit" class="btn" value="{{section.settings.btn-text}}">
+          <input type="submit" class="btn" value="{{ section.settings.btn-text }}">
 
         {% endform %}
       </div>

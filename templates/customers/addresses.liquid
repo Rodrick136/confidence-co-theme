@@ -83,7 +83,7 @@
         <span class="action_link action_delete">{{ "Delete" | delete_customer_address_link: address.id }}</span>
       </p>
       <div class="view_address">
-        <p>{{ address.first_name }} {{address.last_name }}</p>
+        <p>{{ address.first_name }} {{ address.last_name }}</p>
         <p>{{ address.company }}</p>
         <p>{{ address.street }}</p>
         <p>{{ address.city }} {% if address.province_code %}, {{ address.province_code }}{% endif %}</p>
@@ -91,7 +91,7 @@
         <p>{{ address.phone }}</p>
       </div>
     </div>    
-    <div id="edit_address_{{address.id}}" class="customer_address edit_address" style="display:none;">
+    <div id="edit_address_{{ address.id }}" class="customer_address edit_address" style="display:none;">
       {% form 'customer_address', address %}
         <table class="customer_address_table">
           <tr>

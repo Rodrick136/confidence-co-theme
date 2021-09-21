@@ -10,49 +10,49 @@ main {
 }
 
 h1, h2 {
-  font-weight: {{settings.header-font.weight}};
+  font-weight: {{ settings.header-font.weight }};
   font-family: orpheuspro, serif;
-  line-height: 1.{{settings.header-line-height}}em;
+  line-height: 1.{{ settings.header-line-height }}em;
  
 }
 
 h3, h4, h5, h6 {
   font-family: niveau-grotesk, sans-serif;
-  font-weight: {{settings.sub-header-font.weight}};
+  font-weight: {{ settings.sub-header-font.weight }};
   letter-spacing: 1px;
 }
 
 h1 {
-	font-size: {{settings.h1-size}}px;
+	font-size: {{ settings.h1-size }}px;
 }
 h2 {
-	font-size: {{settings.h2-size}}px;
+	font-size: {{ settings.h2-size }}px;
 }
 h3 {
-	font-size: {{settings.h3-size}}px;
+	font-size: {{ settings.h3-size }}px;
 }
 h4 {
-	font-size: {{settings.h4-size}}px;
+	font-size: {{ settings.h4-size }}px;
 }
 h5 {
-	font-size: {{settings.h5-size}}px;
+	font-size: {{ settings.h5-size }}px;
 }
 h6 {
-	font-size: {{settings.h6-size}}px;
+	font-size: {{ settings.h6-size }}px;
 }
 
 p, article, a, .btn, time, button, ul, li, .input-error-message, span, button, input[type], textarea, th, td, .rte {
   font-family: niveau-grotesk, sans-serif;
-  font-size: {{settings.body-size}}px;
-  line-height: 1.{{settings.body-line-height}}em;
+  font-size: {{ settings.body-size }}px;
+  line-height: 1.{{ settings.body-line-height }}em;
 }
 
 .btn {
-  font-size: {{settings.btn-size}}px !Important;
+  font-size: {{ settings.btn-size }}px !Important;
 }
 
 .socials svg, .socials a svg {
-  color: {{settings.primary-header-color}} !important;
+  color: {{ settings.primary-header-color }} !important;
 }
 
 .section {
@@ -94,11 +94,11 @@ p, article, a, .btn, time, button, ul, li, .input-error-message, span, button, i
 }
 
 #challenge main div {
-	background-color: {{settings.secondary-background-color}};
+	background-color: {{ settings.secondary-background-color }};
 }
 
 #challenge .shopify-challenge__message {
-	color: {{settings.secondary-paragraph-color}};
+	color: {{ settings.secondary-paragraph-color }};
 }
 
 .hidden {
@@ -157,77 +157,77 @@ table {
 
 div, header {
 
-	background-color: {{settings.primary_background_color}};
+	background-color: {{ settings.primary_background_color }};
 }
 
 h1, h2, h3, h4, h5, h6{
-	color: {{settings.primary-header-color}};
+	color: {{ settings.primary-header-color }};
 }
 
 p, a, .btn, button, ul, li, input[type="submit"].btn {
-	color: {{settings.primary-paragraph-color}};
+	color: {{ settings.primary-paragraph-color }};
 }
 
 .btn, input[type="submit"].btn {
-	background-color: {{settings.primary-btn-color}};
-  	color: {{settings.primary-btn-text-color}};
+	background-color: {{ settings.primary-btn-color }};
+  	color: {{ settings.primary-btn-text-color }};
 }
 
 textarea,
 input[type] {
   background: transparent;
-  border: 1px solid {{settings.primary-paragraph-color}};
-  color: {{settings.primary-paragraph-color}};
+  border: 1px solid {{ settings.primary-paragraph-color }};
+  color: {{ settings.primary-paragraph-color }};
 }
 textarea::placeholder,
 input[type]::placeholder {
-  color: {{settings.primary-paragraph-color}};
+  color: {{ settings.primary-paragraph-color }};
 }
 
 /*Secondary Color Sections*/
 
 body, .shopify-policy__container, .shopify-policy__container div, div.secondary, div.secondary .page-container,  div.secondary div, header.secondary, header.secondary div {
 
-	background-color: {{settings.secondary-background-color}};
+	background-color: {{ settings.secondary-background-color }};
 }
 
 .secondary h1, .secondary h2, .secondary h3, .secondary h4, .secondary h5, .secondary h6, .shopify-policy__container h1, .shopify-policy__container h2,.shopify-policy__container h3, .shopify-policy__container h4, .shopify-policy__container h5, .shopify-policy__container h6 {
-	color: {{settings.secondary-header-color}};
+	color: {{ settings.secondary-header-color }};
 }
 
 .secondary p, .secondary a, .secondary .btn, .secondary button, .secondary ul, .secondary li, .secondary input[type="submit"].btn {
-	color: {{settings.secondary-paragraph-color}};
+	color: {{ settings.secondary-paragraph-color }};
 }
 
 .secondary .btn, .secondary input[type="submit"].btn {
-	background-color: {{settings.primary-btn-color}};
-  	color: {{settings.secondary-btn-text-color}};
+	background-color: {{ settings.primary-btn-color }};
+  	color: {{ settings.secondary-btn-text-color }};
 }
 
 .secondary .socials svg {
-  color: {{settings.alt-header-color}} !important;
+  color: {{ settings.alt-header-color }} !important;
 }
 
 .secondary .socials a svg {
-	fill: {{settings.alt-header-color}} !important;
+	fill: {{ settings.alt-header-color }} !important;
 }
 
 
 div.secondary textarea,
 div.secondary input[type] {
   background: transparent;
-  border: 1px solid {{settings.secondary-paragraph-color}};
-  color: {{settings.secondary-paragraph-color}};
+  border: 1px solid {{ settings.secondary-paragraph-color }};
+  color: {{ settings.secondary-paragraph-color }};
 }
 div.secondary textarea::placeholder,
 div.secondary input[type]::placeholder {
-  color: {{settings.secondary-paragraph-color}};
+  color: {{ settings.secondary-paragraph-color }};
 }
 
 /* Alternative */
 
 .alternate {
-	color:  {{settings.alt-header-color}} !important;
+	color:  {{ settings.alt-header-color }} !important;
 }
 
 /* Instagram */
@@ -243,8 +243,8 @@ div.secondary input[type]::placeholder {
 }
 
 .social-widget-wrapper div,.social-widget-wrapper div p {
-  background-color:{{settings.secondary-background-color}} !important;
-  color: {{settings.secondary-paragraph-color}};
+  background-color:{{ settings.secondary-background-color }} !important;
+  color: {{ settings.secondary-paragraph-color }};
 }
 
 /*.shopify-policy__container*/

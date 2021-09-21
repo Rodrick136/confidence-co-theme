@@ -19,12 +19,12 @@
   <link rel="canonical" href="{{ canonical_url }}" />
   <link rel="icon" 
       type="image/png" 
-      href="{{settings.favicon | img_url: 'small'}}">
+      href="{{ settings.favicon | img_url: 'small' }}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  {% include 'open-graph-tags' %}
-  {% include 'twitter-card' %}
+  {% render 'open-graph-tags' %}
+  {% render 'twitter-card' %}
 
   {{ content_for_header }}
 
@@ -89,7 +89,7 @@
 
   {{ 'shop.js'  | asset_url | script_tag }}
 
-{% include 'social-head-common.liquid' %}
+{% render 'social-head-common.liquid' %}
 	
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

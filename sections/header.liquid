@@ -51,7 +51,7 @@
 
 </style>
 
-<header class="{{section.settings.text-block-style}}">
+<header class="{{ section.settings.text-block-style }}">
   <div class="logo-container">
       {% if settings.logo %}
       <a id="logo" href="/">
@@ -71,7 +71,7 @@
   </div>
   
   <div class="socials">
-    {% include 'socials' %}
+    {% render 'socials' %}
   </div>
 
 

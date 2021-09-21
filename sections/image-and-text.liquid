@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
   }
-  .section-{{section.id}}.image-text-block .content{
+  .section-{{ section.id }}.image-text-block .content{
     {% if section.settings.image-placement == "0" %}
     	width: 51%;
     	text-align: center;
@@ -16,8 +16,8 @@
   		width: calc(50% - 20px);
     {% endif %}
   }
-  .section-{{section.id}}.image-text-block img{
-    order: {{section.settings.image-placement}};
+  .section-{{ section.id }}.image-text-block img{
+    order: {{ section.settings.image-placement }};
     width: 50%;
     {% if section.settings.image-placement == "left" %}
    		order: 0;
@@ -31,7 +31,7 @@
     	padding-left: 20px;
     {% endif %}
   }
-  .section-{{section.id}}.image-text-block h2, .section-{{section.id}}.image-text-block p{
+  .section-{{  section.id  }}.image-text-block h2, .section-{{section.id}}.image-text-block p{
     text-align: left;
     padding: 20px 0;
     margin: 0;
@@ -61,7 +61,7 @@
     background-image: url('{{ 'bolt_icon-03.png' | asset_url }}');
   }
   
-  .section-{{section.id}}.image-text-block p{
+  .section-{{ section.id }}.image-text-block p{
     {% if section.settings.btn-text != blank %}
     	margin-bottom: 20px;
     {% endif %}
@@ -99,14 +99,14 @@
   }
 </style>
 
-<div class="section section-{{section.id}} image-text-block {{section.settings.text-block-style}}">
+<div class="section section-{{ section.id }} image-text-block {{ section.settings.text-block-style }}">
   <div class="page-container">
     {% if section.settings.image != blank %}
     	<img src="{{section.settings.image | img_url: '1024x' }} ">
     {% endif %}
     <div class="content">
-      <h3>{{section.settings.pre-title}}</h3>
-      <{{section.settings.header-size}} class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</{{section.settings.header-size}}>
+      <h3>{{ section.settings.pre-title }}</h3>
+      <{{  section.settings.header-size  }} class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</{{section.settings.header-size}}>
       {% if section.settings.body != blank %}
       	{{section.settings.body}}
       {% endif %}

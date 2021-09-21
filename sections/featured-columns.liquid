@@ -67,16 +67,16 @@
 
 <div id="featured" class="section featured-block {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
   <div class="page-container">
-    <h6>{{section.settings.sub-header}}</h6>
-    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
-    {{section.settings.body}}
+    <h6>{{ section.settings.sub-header }}</h6>
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</h2>
+    {{ section.settings.body }}
     <div class="featured-container">
     {% for block in section.blocks %}
       {%assign product = all_products[block.settings.featured-product]%}
     	<div class="featured">
-          <h3>{{block.settings.title}}</h3>
-          <h6>{{block.settings.sub-title}}</h6>
-          <div id="block-{{block.id}}">
+          <h3>{{ block.settings.title }}</h3>
+          <h6>{{ block.settings.sub-title }}</h6>
+          <div id="block-{{ block.id }}">
             {% for image in product.images %}
             	<div class="slide">
             		<img src="{{image | img_url: '1024x' }}">
@@ -84,17 +84,17 @@
             {% endfor %}
           </div>
           
-          <h4>{{product.price | money}}</h4>
+          <h4>{{ product.price | money }}</h4>
           {% if block.settings.description != blank %}
           	{{block.settings.description}}
           {% else %}
           	{{product.description}}
           {% endif %}
-          <a class="btn" href="/cart/add?id={{product.selected_or_first_available_variant.id}}">add to cart</a>
+          <a class="btn" href="/cart/add?id={{ product.selected_or_first_available_variant.id }}">add to cart</a>
     	</div>
         <script>
           $(document).ready(function(){
-            $('#block-{{block.id}}').slick({
+            $('#block-{{ block.id }}').slick({
               arrows: false,
               dots: true,
               adaptiveHeight: true
@@ -102,7 +102,7 @@
           });
       	</script>
         <style>
-          #block-{{block.id}} .slide{
+          #block-{{ block.id }} .slide{
           	padding: 0;
           }
           .slick-dots li button:before{

@@ -69,7 +69,7 @@
   }
 </style>
 
-<footer class="{{section.settings.text-block-style}}">
+<footer class="{{ section.settings.text-block-style }}">
   <div class="logo-container">
     {% if settings.footer-logo %}
       <a id="footer-logo" href="/">
@@ -89,9 +89,9 @@
     {% endif %}
     
   </div>
-  {% include 'footer-nav' %}
+  {% render 'footer-nav' %}
   <div class="socials">
-  	{% include 'socials' %}
+  	{% render 'socials' %}
   </div>
   <p class="terms"><a>TERMS & CONDITIONS</a> <a>PRIVACY POLICY</a></p>
   {% if section.settings.shop-description != blank %}

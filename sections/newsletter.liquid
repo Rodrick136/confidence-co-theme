@@ -76,7 +76,7 @@
           id="{{ formId }}-email"
           class="input-group__field{% if form.errors %} input--error{% endif %}"
           value="{{ form.email }}"
-          placeholder="{{section.settings.placeholder-text}}"
+          placeholder="{{ section.settings.placeholder-text }}"
           aria-label="Email"
           aria-required="true"
           autocorrect="off"
@@ -89,7 +89,7 @@
           >
         <span class="input-group__btn">
           <button type="submit" class="btn" name="commit">
-            <span>{{section.settings.btn-text}}</span>
+            <span>{{ section.settings.btn-text }}</span>
           </button>
         </span>
       </div>

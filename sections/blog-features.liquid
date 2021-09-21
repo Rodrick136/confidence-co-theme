@@ -68,19 +68,19 @@
 
 <div id="featured" class="section featured-blog {% if section.settings.text-block-style == "primary" %}primary{% else %}secondary{%endif%}">
   <div class="page-container">
-    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{section.settings.title}}</h2>
-    <h6>{{section.settings.sub-header}}</h6>
-    {{section.settings.body}}
+    <h2 class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</h2>
+    <h6>{{ section.settings.sub-header }}</h6>
+    {{ section.settings.body }}
     <div class="featured-container">
     	<div class="featured">
-          <img src="{{blogs.news.articles[0].image | img_url: '1024x' }}">
+          <img src="{{ blogs.news.articles[0].image | img_url: '1024x' }}">
           {% assign exp = blogs.news.articles[0].excerpt_or_content  | truncate: 100 %}
-          <p><span class="blog-title">{{blogs.news.articles[0].title}}:</span> {{exp  | strip_html }} <a class="more" href="{{blogs.news.articles[0].url}}">read now »</a></p>
+          <p><span class="blog-title">{{ blogs.news.articles[0].title }}:</span> {{ exp  | strip_html }} <a class="more" href="{{ blogs.news.articles[0].url }}">read now »</a></p>
     	</div>
       <div class="featured">
-          <img src="{{blogs.podcast.articles[0].image | img_url: '1024x' }}">
+          <img src="{{ blogs.podcast.articles[0].image | img_url: '1024x' }}">
           {% assign pod-exp = blogs.podcast.articles[0].excerpt_or_content  | truncate: 100 %}
-          <p><span class="blog-title">{{blogs.podcast.articles[0].title}}:</span> {{pod-exp  | strip_html }} <a class="more" href="{{blogs.podcast.articles[0].url}}">listen now »</a></p>
+          <p><span class="blog-title">{{ blogs.podcast.articles[0].title }}:</span> {{ pod-exp  | strip_html }} <a class="more" href="{{ blogs.podcast.articles[0].url }}">listen now »</a></p>
     	</div>
 
     </div>
