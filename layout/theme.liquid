@@ -39,8 +39,7 @@
   <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"
-    async></script>
+    crossorigin="anonymous"></script>
   {% if template contains 'customers' %}
     <script src="{{ 'customer_area.js'  | shopify_asset_url }}" async></script>
   {% endif %}
@@ -48,7 +47,6 @@
   <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
   <script src="{{ 'shopify_common.js' | asset_url }}" defer></script>
   <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
-  <script src="{{ 'api.jquery.js' | shopify_asset_url }}" async></script>
   <script defer>$('html').removeClass('no-js').addClass('js');</script>
   
   
