@@ -1,3 +1,5 @@
+<script src="{{ 'marquee.js' | asset_url }}" defer></script>
+
 <style>
  #product {
   --bg-white: white;
@@ -12,7 +14,6 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
   margin-top: 70px;
   background-color: var(--bg-white);
  }
@@ -21,19 +22,39 @@
   padding: 0;
   margin: 0;
  }
- #product img {
+ #product p {
+  padding: 0;
+  margin: 0;
+ }
+ #product .product_image img {
   width: 100%;
   height: 100%;
  }
- #product button {
+ #product .button {
   background-color: var(--bg-button);
-  border: none;
-  outline: none;
   margin: 0;
-  padding: 20px;
+  padding: 25px;
+  width: fit-content;
+  min-width: 200px;
+  text-align: center;
+ }
+ #product .button a {
+  margin: 0 auto;
   text-transform: uppercase;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-decoration: none;
+ }
+ #product .paragraph {
+  max-width: 500px;
+ }
+ #product .section {
+  
  }
  #product .first_fold {
+  margin: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -42,21 +63,164 @@
  #product .first_fold > div {
   flex: 1;
  }
+ #product .product_description > * {
+  margin-bottom: 25px;
+ }
+ #product > div.section.first_fold > div.product_image {
+  background-color: var(--bg-gray);
+ }
  #product .first_fold .product_description_c {
-  padding-top: 20px;
+  padding-top: 25px;
  }
  #product .first_fold .product_description {
-  padding-left: 20px;
+  padding-left: 35px;
+ }
+ #product .first_fold .product_description_list { 
+  margin: 25px 0;
+  margin-bottom: 50px;
+ }
+ #product .first_fold .product_description_list li { 
+  list-style-type: none;
+  margin-bottom: 10px;
+ }
+ #product .first_fold .product_description_list li:before { 
+  content: url('{{ 'bolt_icon-03.png' | asset_img_url: '5x' }}');
+  margin-left: -20px;
+  margin-right: 10px;
  }
  #product h1 {
   font-size: 20px;
   font-weight: 200;
   text-transform: uppercase;
  }
+ #product h2 {
+  padding: 0;
+  margin: 0;
+ }
+ #product .product_description_list {
+  
+ }
+ #product .small_scroll_banner_w {
+  width: 100%;
+  height: 50px;
+  background-color: var(--bg-pink);
+ }
+ #product .small_scroll_banner_c {
+  width: 100%;
+  height: 50px;
+  background-color: var(--bg-pink);
+  overflow:hidden;
+ }
+ #product .small_scroll_banner {
+  background-color: var(--bg-pink);
+ }
+ #product .second_fold {
+  margin: 100px 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
+ }
+ #product > div.section.second_fold > h2,
+ #product > div.section.second_fold > p:nth-child(3),
+ #product > div.section.second_fold > div.icons,
+ #product > div.section.second_fold > p.paragraph {
+  margin-bottom: 50px;
+ }
+ #product .second_fold .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  gap: 50px;
+ }
+ #product > div.section.second_fold > p.paragraph {
+  text-align: center;
+ }
+ #product .third_fold {
+  padding-top: 50px;
+  padding-bottom: 100px;
+  width: 100%;
+  height: auto;
+  background-color: var(--bg-pink);
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+ }
+ #product .third_fold .offer {
+  border: 1px solid black;
+  height: auto;
+  width: 300px;
+ }
+ #product .offer_photo {
+  border-bottom: 1px solid black;
+  background-color: var(--bg-gray);
+ }
+ #product .offer_text {
+  text-align: center;
+  padding: 0 20px 35px 20px;
+ }
+ #product .offer_text > * {
+  margin: 0 auto;
+  margin-top: 35px;
+ }
+ #product .offer_text p:first-of-type {
+  min-height: 60px;
+ }
 </style>
+<style>
+  .simple-marquee-container *{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    background-color: var(--bg-pink);
+  }
+  .simple-marquee-container {
+    width: 100%;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .simple-marquee-container div {
+    background-color: var(--bg-pink) !important;
+  }
+  .simple-marquee-container .marquee, .simple-marquee-container *[class^="marquee"] {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+  }
+  .simple-marquee-container .marquee-content-items {
+    display: inline-block;
+    margin: 0;
+    height: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .simple-marquee-container .marquee-content-items p {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+  }
+  .simple-marquee-container .marquee-content-items img {
+    margin: 0 1em;
+  }
 
+</style>
 <div id="product">
-  <div class="first_fold">
+  <div class="section first_fold">
     <div class="product_image">
       <img loading="lazy" height width src="{{ product.featured_image | img_url: '800x' }}" >
     </div>
@@ -64,20 +228,138 @@
       <div class="product_description">
         <h1>{{ product.title }}</h1>
         <h2>Stop bloat in its tracks.</h2>
-        <p>
-          Take Confidence with your meal to avoid bloating, stomach pains, indigestion, constipation, & awkward gas. Get Confidence delivered monthly so you’re never without it. 
+        <p class="paragraph">
+          Take Confidence with your meal to avoid bloating, stomach pains, indigestion, constipation, & awkward gas. <strong>Get Confidence delivered monthly</strong> so you’re never without it. 
         </p>
         <ul class="product_description_list">
           <li>90 pills = 30(ish) day supply</li>
-         <li>Subscribe to save 15% per month</li>
-         <li>Free shipping</li>
+          <li>Subscribe to save 15% per month</li>
+          <li>Free shipping</li>
           <li>Cancel anytime</li>
         </ul>
-        <button>subscribe - $76.50/mo <strike>$90</strike></button>
+        <div class="button">
+          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1"><strong>subscribe - $76.50/mo</strong> <strike>$90</strike></a>
+        </div>
       </div>
     </div>
   </div>
+  {% capture banner_icon %}
+    <img loading="lazy" height="20" width="10" src="{{ 'bolt_icon-03.png' | asset_img_url: '10x' }}">
+  {% endcapture %}
+  <div class="small_scroll_banner_w">
+    <div class="small_scroll_banner_c simple-marquee-container">
+      <div class="small_scroll_banner marquee">
+        <div class="marquee-content-items">
+          <p>Doctor Formulated</p>
+          {{ banner_icon }}
+          <p>No synthetic fillers</p>
+          {{ banner_icon }}
+          <p>3rd Party Tested</p>
+          {{ banner_icon }}
+          <p>Non-GMO</p>
+          {{ banner_icon }}
+          <p>No artificial sweeteners</p>
+          {{ banner_icon }}
+          <p>100% All-Natural</p>
+          {{ banner_icon }}
+          <p>100% Vegan</p>
+          {{ banner_icon }}
+          <p>Gluten-Free</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section second_fold">
+    <h2>Stop bloat in its tracks.</h2>
+    <p>Indulging a little extra today?</p>
+    <p>Just take a little extra Confidence with every meal.</p>
+    <div class="icons">
+      <img loading="lazy" height width src="{{ 'shop_icons-03.png' | asset_img_url: '175x' }}" >
+      <img loading="lazy" height width src="{{ 'shop_icons-04.png' | asset_img_url: '175x' }}" >
+      <img loading="lazy" height width src="{{ 'shop_icons-05.png' | asset_img_url: '175x' }}" >
+    </div>
+    <p class="paragraph">
+      You’ll feel the effects immediately — however, true progress doesn’t happen overnight. To improve your digestive health, we recommend taking digestive enzymes with <strong>consistency</strong>. 
+    </p>
+    <div class="button">
+      <a href="/">Learn More</a>
+    </div>
+    
+  </div>
+  <div class="section third_fold">
+    <div class="offer">
+      <div class="offer_photo">
+        <img loading="lazy" height width src="{{ 'Trio_Multiple_Products.png' | asset_img_url: '300x' }}" >
+      </div>
+      <div class="offer_text">
+        <h3><strong>Subscribe & Save</strong></h3>
+        <p>Committed to gut health? Get Confidence delivered monthly so you’re never without it.</p>
+        <p>90 pills / 30-ish day supply</p>
+        <p>$76.50 per month</p>
+        <div class="button">
+          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Subscribe</a>
+        </div>
+      </div>
+    </div>
+    <div class="offer">
+      <div class="offer_photo">
+        <img loading="lazy" height width src="{{ 'Trio_Multiple_Products.png' | asset_img_url: '300x' }}" >
+      </div>
+      <div class="offer_text">
+        <h3><strong>Get Started</strong></h3>
+        <p>Try Confidence for one month and feel your gut transform.</p>
+        <p>90 pills / 30-ish day supply</p>
+        <p>$90 per orde</p>
+        <div class="button">
+          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="offer">
+      <div class="offer_photo">
+        <img loading="lazy" height width src="{{ 'Single_Product_Photo.png' | asset_img_url: '300x' }}" >
+      </div>
+      <div class="offer_text">
+        <h3><strong>Commitment Issues </strong></h3>
+        <p>Grab a sample pack and feel the gut relief for yourself.</p>
+        <p>30 pills / 10-ish day supply</p>
+        <p>$35 per order</p>
+        <div class="button">
+          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section fourth_fold">
+  <div class="slider">
+  <div class="testimonial">
+    <p>Hello</p>
+  </div>
+  <div class="testimonial">
+    <p>Hello</p>
+  </div>
+  </div>
+  </div>
 </div>
+
+<script>
+  $(function (){
+      let options = {
+        autostart: true,
+        property: 'value',
+        onComplete: null,
+        duration: 20000,
+        padding: 10,
+        marquee_class: '.marquee',
+        container_class: '.simple-marquee-container',
+        sibling_class: 0,
+        hover: true,
+        velocity: 0.1,
+        direction: 'right'
+      }
+      $('.simple-marquee-container').SimpleMarquee(options);
+});
+</script>
 
 <script type="application/ld+json">
     {
