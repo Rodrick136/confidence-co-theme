@@ -1,0 +1,28 @@
+<script src="{{ 'marquee.js' | asset_url }}" defer></script>
+<link rel="stylesheet" href="{{ 'marquee.css' | asset_url }}"/>
+
+<style>
+#about.page {
+  width: 100%;
+  height: auto;
+  margin-top: 70px;
+  --bg-white: white;
+  --bg-gray: #f3f3f3;
+  --bg-pink: #f9ede8;
+  --bg-red: #ed0835;
+  background-color: var(--bg-white);
+}
+</style>
+<style>
+/* First Section */
+#about.page .section.first {
+  width: 100%;
+  background-color: var(--bg-pink);
+}
+</style>
+<div id="about" class="page">
+  <div class="section first">
+  <h1>The Confidence Co. Story</h1>
+  <h2>We trust your gut.</h2>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <script src="{{ 'marquee.js' | asset_url }}" defer></script>
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{{ 'marquee.css' | asset_url }}"/>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <style>
  #product {
   --bg-white: white;
@@ -303,50 +304,6 @@
   font-size: 20px;
   text-transform: uppercase;
  }
-</style>
-<style>
-  .simple-marquee-container *{
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -o-box-sizing:border-box;
-    box-sizing:border-box;
-    background-color: var(--bg-pink);
-  }
-  .simple-marquee-container {
-    width: 100%;
-    float: left;
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-  .simple-marquee-container div {
-    background-color: var(--bg-pink) !important;
-  }
-  .simple-marquee-container .marquee, .simple-marquee-container *[class^="marquee"] {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-  }
-  .simple-marquee-container .marquee-content-items {
-    display: inline-block;
-    margin: 0;
-    height: 50px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
-  .simple-marquee-container .marquee-content-items p {
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-  }
-  .simple-marquee-container .marquee-content-items img {
-    margin: 0 1em;
-  }
-
 </style>
 <div id="product">
   <div class="section first_fold">

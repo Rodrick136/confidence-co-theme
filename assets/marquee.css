@@ -1,0 +1,40 @@
+.simple-marquee-container *{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
+  background-color: var(--bg-pink);
+}
+.simple-marquee-container {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+.simple-marquee-container div {
+  background-color: var(--bg-pink) !important;
+}
+.simple-marquee-container .marquee, .simple-marquee-container *[class^="marquee"] {
+  display: inline-block;
+  white-space: nowrap;
+  position: absolute;
+}
+.simple-marquee-container .marquee-content-items {
+  display: inline-block;
+  margin: 0;
+  height: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.simple-marquee-container .marquee-content-items p {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+.simple-marquee-container .marquee-content-items img {
+  margin: 0 1em;
+}
