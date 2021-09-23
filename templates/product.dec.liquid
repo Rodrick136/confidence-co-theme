@@ -1,11 +1,12 @@
 <script src="{{ 'marquee.js' | asset_url }}" defer></script>
-
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
 <style>
  #product {
   --bg-white: white;
   --bg-gray: #f3f3f3;
   --bg-pink: #f9ede8;
-  --bg-button: #ed0835;
+  --bg-red: #ed0835;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -22,7 +23,7 @@
   padding: 0;
   margin: 0;
  }
- #product p {
+ #product p, #product h3 {
   padding: 0;
   margin: 0;
  }
@@ -30,22 +31,26 @@
   width: 100%;
   height: 100%;
  }
- #product .button {
-  background-color: var(--bg-button);
+ #product div.button {
+  background-color: var(--bg-red);
   margin: 0;
-  padding: 25px;
+  padding: 20px;
   width: fit-content;
   min-width: 200px;
   text-align: center;
  }
- #product .button a {
-  margin: 0 auto;
+ #product div.button p {
   text-transform: uppercase;
   color: white;
   font-size: 16px;
   font-weight: 200;
   letter-spacing: 1px;
   text-decoration: none;
+ }
+ #product a.button {
+  margin: 0 auto;
+  text-decoration: none;
+  color: white;
  }
  #product .paragraph {
   max-width: 500px;
@@ -54,6 +59,7 @@
   
  }
  #product .first_fold {
+  width: 100%;
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -171,8 +177,131 @@
   margin: 0 auto;
   margin-top: 35px;
  }
- #product .offer_text p:first-of-type {
+ #product .third_fold div.offer_text > p:nth-child(2) {
   min-height: 60px;
+ }
+ #product .third_fold div.offer_text > p:nth-child(4) {
+  margin-bottom: 25px;
+ }
+ #product .third_fold .offer_text div.button {
+  margin: 0 auto;
+ }
+ #product > div.section.fourth_fold {
+   margin-top: 100px;
+   margin-bottom: 100px;
+ }
+ #product .fourth_fold div.button {
+  margin: 0 auto;
+ }
+ #product .swiper {
+  width: 75%;
+  height: 500px;
+  margin: 0 auto;
+  max-width: 1000px;
+ }
+ #product > div.section.fourth_fold > div.button {
+  margin: 0 auto;
+ }
+ :root {
+  --swiper-navigation-size: 40px;
+  --swiper-theme-color: #ed0835;
+ }
+ #product .swiper-slide {
+  display: flex;
+ }
+ #product .slide_inner {
+  display: flex;
+  padding: 0 12%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+ }
+ #product .slide_inner .slide_image {
+  width: 30%;
+ }
+ #product .slide_inner .slide_image video {
+  width: 100%;
+  height: auto;
+  -moz-box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  -webkit-box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+ }
+ #product .slide_inner .slide_text {
+  width: 70%;
+ }
+ #product .slide_text .name {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+ }
+ #product .slide_text .story {
+  margin-bottom: 30px;
+ }
+ #product .slide_text .dosage {
+  margin-bottom: 30px;
+ }
+ #product .slide_text .quote {
+  margin-bottom: 30px;
+ }
+ #product > div.section.fifth {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--bg-pink);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+ #product > div.section.fifth h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+ }
+ #product > div.section.fifth .paragraph {
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 75px;
+ }
+ #product > div.section.fifth .cards {
+  background-color: var(--bg-pink);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  column-gap: 35px;
+  row-gap: 50px;
+  max-width: 980px;
+ }
+ #product > div.section.fifth .card {
+  max-width: 240px;
+  border: 1.5px solid black;
+  text-align: center;
+  padding: 30px;
+ }
+ #product > div.section.fifth .card img {
+  margin-bottom: 10px;
+ }
+ #product > div.section.fifth .card .title {
+  color: var(--bg-red);
+  margin-bottom: 25px;
+ }
+ #product > div.section.fifth .card .description {
+  line-height: 25px;
+  margin-bottom: 25px;
+ }
+ #product > div.section.fifth .card .ingredient_title {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+ }
+ #product > div.section.fifth .card .ingredients {
+  line-height: 25px;
+ }
+ #product > div.section.sixth > div.product_description_c > div > p:nth-child(1) {
+  font-size: 20px;
+  text-transform: uppercase;
  }
 </style>
 <style>
@@ -237,9 +366,11 @@
           <li>Free shipping</li>
           <li>Cancel anytime</li>
         </ul>
-        <div class="button">
-          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1"><strong>subscribe - $76.50/mo</strong> <strike>$90</strike></a>
-        </div>
+        <a class="button" href="/cart/add?id={{ product.variants[0].id }}&quantity=1">
+          <div class="button">
+            <p><strong>subscribe - $76.50/mo</strong> <strike>$90</strike></p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -281,9 +412,11 @@
     <p class="paragraph">
       You’ll feel the effects immediately — however, true progress doesn’t happen overnight. To improve your digestive health, we recommend taking digestive enzymes with <strong>consistency</strong>. 
     </p>
-    <div class="button">
-      <a href="/">Learn More</a>
-    </div>
+    <a class="button" href="/">
+      <div class="button">
+        <p>Learn More</p>
+      </div>
+    </a>
     
   </div>
   <div class="section third_fold">
@@ -296,9 +429,11 @@
         <p>Committed to gut health? Get Confidence delivered monthly so you’re never without it.</p>
         <p>90 pills / 30-ish day supply</p>
         <p>$76.50 per month</p>
-        <div class="button">
-          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Subscribe</a>
-        </div>
+        <a class="button" href="/cart/add?id={{ product.variants[0].id }}&quantity=1">
+          <div class="button">
+            <p>Subscribe</p>
+          </div>
+        </a>
       </div>
     </div>
     <div class="offer">
@@ -310,9 +445,11 @@
         <p>Try Confidence for one month and feel your gut transform.</p>
         <p>90 pills / 30-ish day supply</p>
         <p>$90 per orde</p>
-        <div class="button">
-          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Add to Cart</a>
-        </div>
+        <a class="button" href="/cart/add?id={{ product.variants[0].id }}&quantity=1">
+          <div class="button">
+            <p>ADD TO CART</p>
+          </div>
+        </a>
       </div>
     </div>
     <div class="offer">
@@ -324,40 +461,414 @@
         <p>Grab a sample pack and feel the gut relief for yourself.</p>
         <p>30 pills / 10-ish day supply</p>
         <p>$35 per order</p>
-        <div class="button">
-          <a href="/cart/add?id={{ product.variants[0].id }}&quantity=1">Add to Cart</a>
-        </div>
+        <a class="button" href="/cart/add?id={{ product.variants[0].id }}&quantity=1">
+          <div class="button">
+            <p>ADD TO CART</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
   <div class="section fourth_fold">
-  <div class="slider">
-  <div class="testimonial">
-    <p>Hello</p>
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide meet_tess">
+          <div class="slide_inner">
+            <div class="slide_image">
+              <video controls="">
+                <source src="https://cdn.shopify.com/s/files/1/0600/0069/8575/files/Tess_Testimonial_1.mp4?v=1631124221" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="slide_text">
+              <h2 class="name">Meet Tess</h2>
+              <p class="title">Graphic Designer & Cat Mom</p>
+              <p class="story">Was struggling with gluten intolerance & IBS.</p>
+              <p><strong>Dosage:</strong></p>
+              <p class="dosage">Takes 1 pill with small meals & 2 pills with her largest meal of the day.</p>
+              <p><strong>Since taking Confidence:</strong></p>
+              <p class="quote">“They have helped me live life more normally and eat the foods that I love dearly.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide meet_sam">
+          <div class="slide_inner">
+            <div class="slide_image">
+              <video controls="">
+                <source src="https://cdn.shopify.com/s/files/1/0600/0069/8575/files/Sam_Testimonial.mp4?v=1631124200" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="slide_text">
+              <h2 class="name">Meet Sam</h2>
+              <p class="title">Business Owner & Dog Mom</p>
+              <p class="story">Was struggling with gluten & dairy sensitivities.</p>
+              <p><strong>Dosage:</strong></p>
+              <p class="dosage">Takes 2-3 pills with the largest meal of the day.  </p>
+              <p><strong>Since taking Confidence:</strong></p>
+              <p class="quote">“This has been a complete game changer and I finally feel like I can go out and eat the foods I want and not feel like crap the next day.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <a class="button" href="#">
+      <div class="button">
+        <p>See more Reviews</p>
+      </div>
+    </a>
   </div>
-  <div class="testimonial">
-    <p>Hello</p>
+  <div class="section fifth">
+    <h2>The Little Capsule that Could</h2>
+    <p class="paragraph">When taken with your meal, here’s how the digestive enzyme works with your body to help you get more from your food, with fewer ✨uncomfy✨ side effects: </p>
+    <div class="cards">
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-06.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Breaks down protein</p>
+        <p class="description">Protein helps us ….., and more. When not digested properly, protein can cause (symptoms), and a lack of protein absorption can lead to (problems).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">Protease, Endopeptidase</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-07.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Breaks down gluten</p>
+        <p class="description">Gluten helps us (healthy bodily functions) and more. When not digested properly, gluten can cause (symptoms), and a lack of gluten absorption can lead to (problems).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">DPPIV</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-08.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Breaks down fat </p>
+        <p class="description">Fat helps us (healthy bodily functions) and more. When not digested properly, fat can cause (symptoms), and a lack of fat absorption can lead to (problems).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">Lipase</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-09.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Breaks down carbs</p>
+        <p class="description">Carbohydrates help us (healthy bodily functions) and more. When not digested properly, carbs can cause (symptoms), and a lack of carb absorption can lead to (problems).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">Lactase, Amylase, Invertase, Xylanase, Maltase</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-10.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Stomach soothing herbs</p>
+        <p class="description">It’s pretty hard to feel confident or comfortable when your stomach is off. Herbs help to (sciency thing they do) so you can alleviate uncomfortable symptoms like (symptoms).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">Marshmallow Root Powder, Caraway Seed, Ginger Root Extract</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" height width src="{{ 'shop_icons-11.png' | asset_img_url: '45x' }}" class="icon">
+        <p class="title">Breaks down fiber</p>
+        <p class="description">Fiber helps us (healthy bodily functions), and more. When not digested properly, fiber can cause (symptoms), and a lack of fiber absorption can lead to (problems).</p>
+        <p class="ingredient_title">Ingredients at work:</p>
+        <p class="ingredients">Alpha Galactosidase, Glucoamylase, Hemicellulase, Beta Glucanase, Pectinase, Cellulase, Phytase</p>
+      </div>
+    </div>
   </div>
+  <div class="section first_fold sixth">
+    <div class="product_image">
+      <img loading="lazy" height width src="{{ product.featured_image | img_url: '800x' }}" >
+    </div>
+    <div class="product_description_c">
+      <div class="product_description">
+        <p>Commitment Issues?</p>
+        <h2>Grab a Sample Pack!</h2>
+        <p class="paragraph">
+          It’s okay to take things slow. Grab our Sample Pack and feel the Confidence difference for yourself.
+        </p>
+        <ul class="product_description_list">
+          <li>30 pills</li>
+          <li>10(ish) day supply</li>
+          <li>Get a 15% discount code for your next order</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a class="button" href="/cart/add?id={{ product.variants[0].id }}&quantity=1">
+          <div class="button">
+            <p>ADD TO CART</p>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
+  <style>
+    #product .section.seventh {
+      width: 100%;
+      background-color: var(--bg-pink);
+      text-align: center;
+      padding-bottom: 100px;
+    }
+    #product .section.seventh .science_img_c {
+      background-color: var(--bg-pink);
+      text-align: center;
+    }
+    #product .section.seventh .paragraph {
+      background-color: var(--bg-pink);
+      text-align: center;
+      margin: 35px auto;
+    }
+    #product .section.seventh div.button {
+      margin: 0 auto;
+    }
+  </style>
+  <div class="section seventh">
+    <div class="science_img_c">
+      <img loading="lazy" height width src="{{ 'science.gif' | asset_img_url: '300x' }}" >
+    </div>
+    <h2>Yup, it’s science.</h2>
+    <p class="paragraph">
+      Our bodies naturally produce digestive enzymes to break down the foods we consume. As we age or routinely experience stress, our enzyme levels decrease causing indigestion and gut imbalances. <strong>Research has shown</strong> that supplementing with digestive enzymes can enhance and support digestion.
+    </p>
+    <a class="button" href="#">
+      <div class="button">
+        <p>LEARN MORE</p>
+      </div>
+    </a>
+  </div>
+  <style>
+    #product .section.eighth {
+      width: 100%;
+      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    #product .section.eighth h2 {
+      margin-bottom: 100px;
+    }
+    #product .section.eighth .review_plugin {
+      margin-bottom: 100px;
+    }
+    #product .section.eighth div.button {
+      margin: 0 auto;
+    }
+  </style>
+  <div class="section eighth">
+    <h2>Confident Reviews</h2>
+    <div class="review_plugin">
+      <p>[Review Plugin]</p>
+    </div>
+    <a class="button" href="#">
+      <div class="button">
+        <p>Read More Reviews</p>
+      </div>
+    </a>
+  </div>
+  <style>
+    #product .section.ninth {
+      width: 100%;
+      background-color: var(--bg-pink);
+      text-align: center;
+      padding: 100px 0;
+    }
+    #product .section.ninth .questions {
+      background-color: var(--bg-pink);
+      column-gap: 50px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 850px;
+      margin: 65px auto;
+    }
+    #product .section.ninth .question {
+      background-color: var(--bg-pink);
+      text-align: left;
+      max-width: 400px;
+      margin-bottom: 35px;
+    }
+    #product .section.ninth .question_title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    #product .section.ninth div.button {
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+  </style>
+  <div class="section ninth">
+    <h2>Confident Reviews</h2>
+    <div class="questions">
+      <div class="question">
+        <p class="question_title">What are digestive enzymes?</p>
+        <p class="question_answer">
+          Digestive enzymes break down food to help your body absorb nutrients. They break down complex food molecules that, if left undigested, can act as irritants to your GI tract or prevent you from getting the full goodness and nourishment from a given food. You make digestive enzymes in your mouth, pancreas, and even small intestinal lining called the brush border.  
+        </p>
+      </div>
+      <div class="question">
+        <p class="question_title">How many digestive enzymes should I take per meal and when? </p>
+        <p class="question_answer">
+          Totally depends on you and your meal. With smaller meals, we suggest taking 1 pill.  With larger meals we suggest 2-3 pills. All pills ideally should be consumed at the beginning of your meal, with your first bites of food. Don’t worry if you forget, you can still take them after and they will be effective in enhancing your digestion. The goal is remembering to take them!
+        </p>
+      </div>
+      <div class="question">
+        <p class="question_title">Why Confidence Co Digestive Enzymes?</p>
+        <p class="question_answer">
+          Our <a href="/products/digestive-enzyme-complex">Digestive Enzyme Complex</a> is a premium blend, allowing you to take less pills for great results. Our digestive enzyme supplement is vegan, and we selected enzymes that cover a broad array of food sensitivities. Confidence Co digestive enzymes are conveniently built with real life in mind. Slip the sleeves where the digestive enzyme pills are stored into your pocket or purse. They’re there for you when you need them the most.
+        </p>
+      </div>
+      <div class="question">
+        <p class="question_title">What is the difference between a probiotic and a digestive enzyme?</p>
+        <p class="question_answer">
+          Probiotics are also known commonly as "friendly" bacteria. In rare cases they are yeast or other microbes. Probiotics are living organisms that restore the natural balance of your gut bacteria, whereas digestive enzymes are just as their name describes: enzymes that digest. <strong>If you are already taking a probiotic, you can incorporate a digestive enzyme.</strong> They’re a perfect pair and make a great 1-2 punch. Probiotics <i>grow</i> and enzymes <i>break down</i>.
+        </p>
+      </div>
+      <div class="question">
+        <p class="question_title">How can digestive enzymes make me feel healthier?</p>
+        <p class="question_answer">
+          Digestive enzymes break down complex food molecules that if left undigested can act as irritants to your GI tract. Poorly digested food also prevents you from getting the full goodness and nourishment from a given food. <br><br>
+          The smaller you make the morsels of food you eat, the better your body is able to digest it. This allows your body to better use vitamins, minerals and phytonutrients. Chewing your food a lot before swallowing can work together with a good digestive enzyme supplement to break down the food.<br><br>
+          Digestive enzymes can also support the health of people with food intolerances. That’s why some healthcare providers recommend digestive enzyme supplements to lessen the immune challenge of certain foods.
+        </p>
+      </div>
+    </div>
+    <p>Have more questions? We have answers!</p>
+    <a class="button" href="/pages/contact">
+      <div class="button">
+        <p>CONTACT US</p>
+      </div>
+    </a>
+  </div>
+  <style>
+    #product .section.tenth {
+      width: 100%;
+      text-align: center;
+      padding: 100px 0;
+    }
+    #product .section.tenth h2 {
+      margin-bottom: 25px;
+    }
+    #product .section.tenth > p {
+      margin-bottom: 50px;
+    }
+    #product .section.tenth .products {
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      column-gap: 25px;
+      row-gap: 50px;
+    }
+    #product .section.tenth .product {
+      width: 300px;
+    }
+    #product .section.tenth .product_image {
+      margin-bottom: 15px;
+    }
+    #product .section.tenth .product img {
+      width: 250px;
+      border: 1.5px solid black;
+    }
+    #product .section.tenth .product_title {
+      margin-bottom: 15px;
+    }
+    #product .section.tenth .product_title h3 {
+      font-weight: bold;
+      line-height: 35px;
+    }
+    #product .section.tenth div.button {
+      margin: 0 auto;
+      margin-top: 25px;
+    }
+  </style>
+  <div class="section tenth">
+    <h2>Shop More Products</h2>
+    <p>For confident humans with happy guts.</p>
+    <div class="products">
+    <div class="product">
+      <div class="product_image">
+        <img loading="lazy" height="250" width="250" src="{{ 'STOMACH_SOOTHER.png' | file_img_url: '250x' }}">
+      </div>
+      <div class="product_title">
+        <h3 class="title">Stomach</h3>
+        <h3 class="type">Soothers</h3>
+      </div>
+      <p class="product_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      </p>
+      <p class="product_price">$XX</p>
+      <a class="button" href="#">
+        <div class="button">
+          <p>ADD TO CART</p>
+        </div>
+      </a>
+    </div>
+    <div class="product">
+      <div class="product_image">
+        <img loading="lazy" height="250" width="250" src="{{ 'trust_your_gut_02.png' | file_img_url: '250x' }}">
+      </div>
+      <div class="product_title">
+        <h3 class="title">‘Trust Your Gut’</h3>
+        <h3 class="type">Sweatshirt (Gray)</h3>
+      </div>
+      <p class="product_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      </p>
+      <p class="product_price">$XX</p>
+      <a class="button" href="#">
+        <div class="button">
+          <p>ADD TO CART</p>
+        </div>
+      </a>
+    </div>
+    <div class="product">
+      <div class="product_image">
+        <img loading="lazy" height="250" width="250" src="{{ 'trust_your_gut.png' | file_img_url: '250x' }}">
+      </div>
+      <div class="product_title">
+        <h3 class="title">‘Trust Your Gut’</h3>
+        <h3 class="type">Sweatshirt (White)</h3>
+      </div>
+      <p class="product_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      </p>
+      <p class="product_price">$XX</p>
+      <a class="button" href="#">
+        <div class="button">
+          <p>ADD TO CART</p>
+        </div>
+      </a>
+    </div>
+    </div>
   </div>
 </div>
 
 <script>
   $(function (){
-      let options = {
-        autostart: true,
-        property: 'value',
-        onComplete: null,
-        duration: 20000,
-        padding: 10,
-        marquee_class: '.marquee',
-        container_class: '.simple-marquee-container',
-        sibling_class: 0,
-        hover: true,
-        velocity: 0.1,
-        direction: 'right'
+    let options = {
+      autostart: true,
+      property: 'value',
+      onComplete: null,
+      duration: 20000,
+      padding: 10,
+      marquee_class: '.marquee',
+      container_class: '.simple-marquee-container',
+      sibling_class: 0,
+      hover: true,
+      velocity: 0.1,
+      direction: 'right'
+    }
+    $('.simple-marquee-container').SimpleMarquee(options);
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       }
-      $('.simple-marquee-container').SimpleMarquee(options);
+    });
 });
 </script>
 
