@@ -228,6 +228,10 @@ form#comment_form {
           <textarea required{% if form.errors contains "body" %} class="error"{% endif %} rows="7" name="comment[body]" placeholder="Comment" id="comment-body">{{ form.body }}</textarea>
         </div>
         <p>
+          Please note, comments must be approved before they are published.
+        </p>
+        <button type="submit">Write a comment</button>
+        <p>
           {% comment %}If a comment was just submitted with no blank field.{% endcomment %}
           {% if comment and comment.created_at %}
             {% if blog.moderated? %}
@@ -237,10 +241,6 @@ form#comment_form {
             {% endif %}
           {% endif %}
         </p>
-        <p>
-          Please note, comments must be approved before they are published.
-        </p>
-        <button type="submit">Write a comment</button>
       </fieldset>
       
     {% endform %}
