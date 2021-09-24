@@ -1,16 +1,40 @@
 <script src="{{ 'marquee.js' | asset_url }}" defer></script>
 <link rel="stylesheet" href="{{ 'marquee.css' | asset_url }}"/>
-
 <style>
+#about.page * {
+  margin: 0;
+  padding: 0;
+}
 #about.page {
   width: 100%;
   height: auto;
-  margin-top: 70px;
+  margin-top: 75px;
   --bg-white: white;
   --bg-gray: #f3f3f3;
   --bg-pink: #f9ede8;
   --bg-red: #ed0835;
   background-color: var(--bg-white);
+}
+#about div.button {
+  background-color: var(--bg-red);
+  margin: 0;
+  padding: 20px;
+  width: fit-content;
+  min-width: 200px;
+  text-align: center;
+}
+#about div.button p {
+  text-transform: uppercase;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+#about a.button {
+  margin: 0 auto;
+  text-decoration: none;
+  color: white;
 }
 </style>
 <style>
@@ -18,11 +42,212 @@
 #about.page .section.first {
   width: 100%;
   background-color: var(--bg-pink);
+  text-align: center;
+  padding: 100px 0;
+}
+#about.page .section.first h1 {
+  margin-top: 15px;
+  color: var(--bg-red);
 }
 </style>
 <div id="about" class="page">
   <div class="section first">
-  <h1>The Confidence Co. Story</h1>
-  <h2>We trust your gut.</h2>
+    <h3>The Confidence Co. Story</h3>
+    <h1>We trust your gut.</h1>
+  </div>
+  <style>
+    /* Second Section */
+    #about.page .section.second {
+      width: 100%;
+      background-color: white;
+      padding: 100px 0;
+    }
+    #about.page .section.second .section_inner  {
+      margin: 0 auto;
+      background-color: white;
+      max-width: 775px;
+    }
+    #about.page .section.second img {
+      float: right;
+      margin-left: 50px;
+      margin-bottom: 50px;
+    }
+    #about.page .section.second h2 {
+      text-align: justify;
+      font-size: 40px;
+      line-height: 60px;
+      margin-bottom: 25px;
+    }
+    #about.page .section.second h3 {
+      color: var(--bg-red);
+      margin-bottom: 15px;
+    }
+    #about.page .section.second p.title_2 {
+      margin-bottom: 25px;
+    }
+    #about.page .section.second p:not(.button p) {
+      text-align: justify;
+    }
+    #about.page .section.second p.para {
+      margin-bottom: 25px;
+    }
+    #about.page .section.second div.button {
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+    </style>
+  <div class="section second">
+    <div class="section_inner">
+      <img loading="lazy" height width src="{{ 'lexi_large_26c3ed7d-9d72-4862-b5f7-71c139d41efe.jpg' | file_img_url: '300x' }}" >
+      <h2>Your gut should be your friend, not your foe.</h2>
+      <h3><strong>MEET LEXI AIASSA</strong></h3>
+      <p class="title_1"><small>Confidence Co. Founder,</small></p>
+      <p class="title_2"><small>Holistic Nutritionist & Food Enthusiast</small></p>
+      <p class="para">Having struggled with digestive issues for her entire life, Lexi thought that post-meal discomfort was just her normal.</p>
+      <p class="para">That is, until she realized that she was far from alone in her gut struggle— <strong>and that there was something she could do about it</strong>. She tuned into her body and identified the foods that gave her the most severe symptoms. She researched solutions to support healthy digestion, and finally tried a <strong>digestive enzyme</strong> to help her body break down lactose. Beyond the dairy products, she started to notice many of her symptoms alleviate as a result. For the first time, she felt <strong>in control</strong> of her body. She felt <strong>confident</strong> going out to dinner and eating whatever she was craving, without the uncomfortable or embarrassing effects afterward. She decided to take her newfound passion for gut health to the next level, and became a certified holistic nutritionist.</p>
+      <p class="para">After working with clients to improve their gut health through nutrition, Lexi was determined to <strong>educate</strong> others and <strong>eliminate the stigmas</strong> around digestional health. So, she teamed up with a group of experts to create her own premium proprietary digestive enzyme blend, and The Confidence Co was born.</p>
+      <p class="para">Today at The Confidence Co., we believe that confidence comes from within, starting deep inside our gut. Our <strong><i>Digestive Enzyme Complex</i></strong> is thoughtfully made with globally sourced ingredients, and made for those who go.</p>
+      <a class="button" href="/products/digestive-enzyme-complex">
+        <div class="button">
+          <p>GET CONFIDENCE</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="small_scroll_banner_w">
+    <div class="small_scroll_banner_c simple-marquee-container">
+      <div class="small_scroll_banner marquee">
+        <div class="marquee-content-items">
+          <p>no carb left behind</p>
+          <img loading="lazy" height="20" width="10" src="{{ 'bolt_icon-03.png' | asset_img_url: '10x' }}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+  /* Third Section */
+  #about.page .section.third {
+    width: 100%;
+    background-color: white;
+    padding: 100px 0;
+  }
+  #about.page .section.third .section_inner  {
+    margin: 0 auto;
+    background-color: white;
+    max-width: 775px;
+    text-align: center;
+  }
+  #about.page .section.third h2  {
+    margin-bottom: 35px;
+  }
+  #about.page .section.third h3  {
+    line-height: 35px;
+    margin-bottom: 35px;
+  }
+  #about.page .section.third div.button {
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  </style>
+  <div class="section third">
+    <div class="section_inner">
+      <h2>Gut health means a lot to us.</h2>
+      <h3>
+        Immune system is highly functioning.<br>
+        Optimal nutrient absorption from our foods & supplements.<br>
+        Increased and consistent energy levels.<br>
+        Feeling light with zero bloat.<br>
+        No indigestion, ever.<br>
+        No bacterial imbalances, ever.<br>
+      </h3>
+      <p>Curious about the science of gut health?</p>
+      <a class="button" href="/products/digestive-enzyme-complex">
+        <div class="button">
+          <p>GET CONFIDENCE</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <style>
+  /* Fourth Section */
+  #about.page .section.fourth {
+    width: 100%;
+    padding: 100px 0;
+  }
+  #about.page .section.fourth .section_inner  {
+    margin: 0 auto;
+    max-width: 950px;
+    display: flex;
+  }
+  #about.page .section.fourth .section_image_c  {
+    width: 425px;
+  }
+  #about.page .section.fourth .section_text  {
+    padding-left: 50px;
+  }
+  #about.page .section.fourth .section_text > *  {
+    margin-bottom: 25px;
+  }
+  #about.page .section.fourth .section_text h3  {
+    color: var(--bg-red);
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  </style>
+  <div class="section fourth">
+    <div class="section_inner">
+      <div class="section_image_c">
+        <img loading="lazy" height width src="{{ 'Single_Product_Photo.png' | asset_img_url: '425x' }}">
+      </div>
+      <div class="section_text">
+        <h2>Our Philosophy</h2>
+        <h3>Confidence starts from within.</h3>
+        <p class="para">...from within your gut, that is!</p>
+        <p class="para">It isn’t easy to feel on your A-game, achieve goals, or enjoy that dinner date when you’re bloated, constipated, gassy, or heading to the bathroom every few minutes. Our digestive enzyme supplement has natural ingredients that are clinically proven to improve the health of your gut.</p>
+        <p class="para">That means you’ll feel less bloated, more energetic, more comfortable after eating, and more confident.</p>
+        <a class="button" href="/products/digestive-enzyme-complex">
+          <div class="button">
+            <p>GET CONFIDENCE</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <style>
+    #about.page .section.instagram_feed {
+      width: 100%;
+      background-color: white;
+      padding: 100px 0;
+    }
+    #about.page .section.instagram_feed .section_inner  {
+      margin: 0 auto;
+      background-color: white;
+      max-width: 950px;
+      display: flex;
+    }
+  </style>
+  <div class="section instagram_feed">
+    <div class="section_inner">
+      <h2>Curate your feed with Confidence.</h2>
+    </div>
   </div>
 </div>
+
+<script>
+$(function (){
+  let options = {
+    autostart: true,
+    property: 'value',
+    onComplete: null,
+    duration: 20000,
+    padding: 10,
+    marquee_class: '.marquee',
+    container_class: '.simple-marquee-container',
+    sibling_class: 0,
+    hover: true,
+    velocity: 0.1,
+    direction: 'right'
+  }
+  $('.simple-marquee-container').SimpleMarquee(options);
+});
+</script>
