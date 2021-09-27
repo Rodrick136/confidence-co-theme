@@ -51,7 +51,7 @@
   	margin-bottom: 3em;
     text-decoration: none;
     text-transform: uppercase;
-    color: var(--bg-red);
+    color: var(--bg-red) !important;
   }
   @media only screen and (max-width: 850px) {
     #blog .article-wrapper{
@@ -93,7 +93,7 @@
 	<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
   {% endif %}
 
-  <a class="read-more" href="{{ article.url }}">Read more</a>
+  <a class="read-more" href="{{ article.url }}">Read more ›</a>
   
   {% if article.tags.size > 0 %}
     {% for tag in article.tags %} 
