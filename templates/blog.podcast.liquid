@@ -88,12 +88,12 @@
   {% endif %} 
 
 
-  <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+  <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
 
   {% if article.excerpt.size > 0 %}
     {{ article.excerpt }}
   {% else %}
-<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
+	<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
   {% endif %}
 
   <a class="read-more" href="{{ article.url }}">Read more</a>
