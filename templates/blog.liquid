@@ -1,27 +1,38 @@
 <style>
-  #blog h1{
-  	text-align: center;
+  main{
+    --bg-white: white;
+    --bg-gray: #f3f3f3;
+    --bg-pink: #f9ede8;
+    --bg-red: #ed0835;
   }
+  
+  #blog-header {
+    width: 100%;
+    background-color: var(--bg-pink);
+    text-align: center;
+    padding: 100px 0;
+	margin-top: 69px;
+  }
+  #blog-header h1 {
+    margin-top: 15px;
+    color: var(--bg-red);
+  }
+
   #blog .article-wrapper{
   	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
   }
   
-  #blog .article-wrapper .article a, #blog .article-wrapper .article img{
+  #blog .article-wrapper .article a.read-more, #blog .article-wrapper .article img{
   	width: 100%;
     display: block;
   }
-  #blog .article h2 a{
-  	font-family: {{ settings.header-font.family }};
-    font-weight: {{ settings.header-font.weight }};
-    font-family: 'Hatton', serif !important;
-    font-size: {{ settings.h2-size }}px;
-    text-decoration: none;
-  }
-  
-  #blog .article h2 a, #blog .article time, #blog .article p, #blog .article a{
-    text-align: center;
+  #blog .article h3 a{
+    text-transform: uppercase;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 18px;
   }
   
   #blog .article p{
@@ -39,7 +50,33 @@
   
   .read-more{
   	margin-bottom: 3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--bg-red) !important;
   }
+  .section.instagram_feed {
+      width: 100%;
+      background-color: white;
+      padding: 100px 0;
+    }
+    .section.instagram_feed .section_inner  {
+      margin: 0 auto;
+      background-color: white;
+      max-width: 1200px;
+    }
+    .section.instagram_feed h2{
+    	margin-bottom: 20px;
+    }
+    #insta_socials{
+      display: flex;
+      background: white;
+      align-items: center;
+    }
+    #insta_socials svg{
+      width: 15px;
+      color: var(--bg-red);
+      margin-right: 10px;
+    }
   @media only screen and (max-width: 850px) {
     #blog .article-wrapper{
       display: grid;
@@ -55,15 +92,13 @@
     }
   }
 </style>
-
+<div id="blog-header">
+  <h1>Blog or Podcast Heading</h1>
+</div>
 <div id="blog" class="secondary">
+
 {% paginate blog.articles by 6 %}
 
-{% if current_tags %}
-  <h1>{{ blog.title | link_to: blog.url }} - {{ current_tags.first }}</h1>
-{% else %}
-  <h1>{{ blog.title }}</h1>
-{% endif %}
 <div class="article-wrapper">
 {% for article in blog.articles %}
 	<div class="article">
@@ -74,19 +109,15 @@
   {% endif %} 
 
 
-  <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+  <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
 
   {% if article.excerpt.size > 0 %}
     {{ article.excerpt }}
   {% else %}
-<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
+	<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
   {% endif %}
 
-  <a class="read-more" href="{{ article.url }}">Read more</a>
-
-  {% if blog.comments_enabled? and article.comments_count > 0 %}
-    <a href="{{ article.url }}#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
-  {% endif %}
+  <a class="read-more" href="{{ article.url }}">Read more ›</a>
   
   {% if article.tags.size > 0 %}
     {% for tag in article.tags %} 
@@ -108,3 +139,11 @@
 </div>
 {% endpaginate %}
 </div>
+  <div class="section instagram_feed">
+    <div class="section_inner">
+      <h2>Curate your feed with Confidence.</h2>
+      <div id="insta_socials">
+        {% render 'socials' %}
+      </div>
+    </div>
+  </div>
