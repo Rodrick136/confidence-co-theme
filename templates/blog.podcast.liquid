@@ -53,6 +53,17 @@
     text-transform: uppercase;
     color: var(--bg-red) !important;
   }
+  #blog .section.instagram_feed {
+      width: 100%;
+      background-color: white;
+      padding: 100px 0;
+    }
+    #blog .section.instagram_feed .section_inner  {
+      margin: 0 auto;
+      background-color: white;
+      max-width: 950px;
+      display: flex;
+    }
   @media only screen and (max-width: 850px) {
     #blog .article-wrapper{
       display: grid;
@@ -114,19 +125,6 @@
 {% endif %}
 </div>
 {% endpaginate %}
-  <style>
-    #blog .section.instagram_feed {
-      width: 100%;
-      background-color: white;
-      padding: 100px 0;
-    }
-    #blog .section.instagram_feed .section_inner  {
-      margin: 0 auto;
-      background-color: white;
-      max-width: 950px;
-      display: flex;
-    }
-  </style>
   <div class="section instagram_feed">
     <div class="section_inner">
       <h2>Curate your feed with Confidence.</h2>
