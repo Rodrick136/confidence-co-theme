@@ -43,9 +43,9 @@
     font-weight: 400;
     text-transform: capitalize;
   }
-  #header_navigation_c li.active a{
+/*   #header_navigation_c li.active a{
     border-bottom: 2px solid rgb(237, 8, 53);
-  }
+  } */
   #header_navigation_c li a {
   display: inline-block;
   position: relative;
@@ -64,7 +64,7 @@
     transition: transform 0.25s ease-out;
   }
 
-  #header_navigation_c li a:hover:after {
+  #header_navigation_c li a:hover:after,#header_navigation_c li.active a:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
