@@ -1,11 +1,11 @@
 <style>
-  #blog .section.first {
+  #blog-header {
   width: 100%;
   background-color: var(--bg-pink);
   text-align: center;
   padding: 100px 0;
   }
-  #blog .section.first h1 {
+  #blog-header h1 {
     margin-top: 15px;
     color: var(--bg-red);
   }
@@ -63,10 +63,10 @@
     }
   }
 </style>
+<div id="blog-header">
+  <h1>Blog or Podcast Heading</h1>
+</div>
 <div id="blog" class="secondary">
-  <div class="section first">
-    <h1>Blog or Podcast Heading</h1>
-  </div>
 
 {% paginate blog.articles by 6 %}
 
