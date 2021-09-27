@@ -1,0 +1,309 @@
+/* Global */
+.grecaptcha-badge { visibility: hidden; }
+
+body {
+  margin: 0;
+}
+
+main {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+h1, h2 {
+  font-weight: 400;
+  font-family: orpheuspro, serif;
+  line-height: 1.1em;
+ 
+}
+
+h3, h4, h5, h6 {
+  font-family: niveau-grotesk, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+h1 {
+	font-size: 60px;
+}
+h2 {
+	font-size: 45px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 18px;
+}
+h6 {
+	font-size: 18px;
+}
+
+p, article, a, .btn, time, button, ul, li, .input-error-message, span, button, input[type], textarea, th, td, .rte {
+  font-family: niveau-grotesk, sans-serif;
+  font-size: 15px;
+  line-height: 1.3em;
+}
+
+.btn {
+  font-size: 16px !Important;
+}
+
+.socials svg, .socials a svg {
+  color: #000000 !important;
+}
+
+.section {
+  padding: 5em 1em;
+  max-width: 100%;
+}
+
+.shopify-section:first-of-type .section {
+	padding-top: 10em;
+}
+
+@media only screen and (max-width: 600px) {
+  .section {
+    padding: 8em 1em;
+  }
+}
+
+.btn, .form-vertical input[type="submit"].btn {
+  display: inline-block;
+  padding: 20px 40px;
+  margin: auto;
+  text-decoration: none;
+}
+
+
+.page-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.image-text-col-text {
+  text-align: left;
+}
+
+/* Challenge Page */
+#challenge main {
+	padding: 10em 0;
+}
+
+#challenge main div {
+	background-color: #ffffff;
+}
+
+#challenge .shopify-challenge__message {
+	color: #000000;
+}
+
+.hidden {
+	display: none;
+}
+
+/* Sub Pages */
+
+/* Forms */
+
+.form-vertical input[type],.form-vertical textarea {
+	width: calc(100% - 20px);
+    padding: 10px;
+  	margin-bottom: 20px;
+  	
+}
+
+.form-vertical input[type="submit"] {
+	width: auto;
+  	border: none !important;
+  float: right;
+}
+
+/* Inputs */
+.input-error-message {
+	background-color: #fed9db;
+  	color: #f23d3d;
+  	font-size: 14px;
+  	padding: 5px 10px;
+  	margin-top: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.input-error-message span {
+	font-size: 14px;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+.visually-hidden {
+	height: 0;
+    display: block;
+    width: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+table {
+	margin: auto;
+}
+
+/*Primary Color Sections*/
+
+div, header {
+
+	background-color: #f7ede9;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: #000000;
+}
+
+p, a, .btn, button, ul, li, input[type="submit"].btn {
+	color: #000000;
+}
+
+.btn, input[type="submit"].btn {
+	background-color: #e3022b;
+  	color: #fff;
+}
+
+textarea,
+input[type] {
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000;
+}
+textarea::placeholder,
+input[type]::placeholder {
+  color: #000000;
+}
+
+/*Secondary Color Sections*/
+
+body, .shopify-policy__container, .shopify-policy__container div, div.secondary, div.secondary .page-container,  div.secondary div, header.secondary, header.secondary div {
+
+	background-color: #ffffff;
+}
+
+.secondary h1, .secondary h2, .secondary h3, .secondary h4, .secondary h5, .secondary h6, .shopify-policy__container h1, .shopify-policy__container h2,.shopify-policy__container h3, .shopify-policy__container h4, .shopify-policy__container h5, .shopify-policy__container h6 {
+	color: #000000;
+}
+
+.secondary p, .secondary a, .secondary .btn, .secondary button, .secondary ul, .secondary li, .secondary input[type="submit"].btn {
+	color: #000000;
+}
+
+.secondary .btn, .secondary input[type="submit"].btn {
+	background-color: #e3022b;
+  	color: #fff;
+}
+
+.secondary .socials svg {
+  color: #000000 !important;
+}
+
+.secondary .socials a svg {
+	fill: #000000 !important;
+}
+
+
+div.secondary textarea,
+div.secondary input[type] {
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000;
+}
+div.secondary textarea::placeholder,
+div.secondary input[type]::placeholder {
+  color: #000000;
+}
+
+/* Alternative */
+
+.alternate {
+	color:  #000000 !important;
+}
+
+/* Instagram */
+
+.sw-instagram-header-title p {
+	margin: 0 0 20px;
+}
+
+.sw-instagram {
+	width: 90% !important;
+  margin: auto;
+  padding-bottom: 5em;
+}
+
+.social-widget-wrapper div,.social-widget-wrapper div p {
+  background-color:#ffffff !important;
+  color: #000000;
+}
+
+/*.shopify-policy__container*/
+
+.shopify-policy__container {
+	padding: 5em;
+}
+
+/* Shop Globals */
+
+#shop_wrapper, #blog {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 5em 0;
+}
+
+#shop_wrapper h2, #shop_wrapper h1, #shop_wrapper p.empty_message {
+  
+  margin-bottom: 1em;
+}
+
+#shop_wrapper .shop_list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(20%, 100%));
+}
+
+#shop_wrapper .shop_list li {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#shop_wrapper .shop_list li a {
+  text-align: center;
+  text-decoration: none;
+}
+#shop_wrapper .shop_list li a:hover {
+	opacity: .7;
+}
+
+#shop_wrapper .shop_list li img {
+	max-width: 100%;
+}
+@media only screen and (max-width: 1000px)  {
+  #shop_wrapper .shop_list {
+  	grid-template-columns: repeat(4, minmax(25%, 100%));
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #shop_wrapper .shop_list {
+  	grid-template-columns: repeat(3, minmax(25%, 100%));
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #shop_wrapper .shop_list {
+  	grid-template-columns: repeat(2, minmax(25%, 100%));
+  }
+}
