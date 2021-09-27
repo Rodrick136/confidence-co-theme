@@ -1,30 +1,161 @@
 <style>
-  main {
-  	padding: 100px 5em;
-    max-width: 800px;
-    margin: auto;
-  }
-  article img {
-  	max-width: 100%;
-  }
-  article h1 {
-  	text-align: center;
-    font-family: {{ settings.header-font.family }};
-    font-weight: {{ settings.header-font.weight }};
-    font-family: 'Hatton', serif !Important;
-    font-size: {{ settings.h1-size }}px;
-    text-decoration: none;
-    color: {{ settings.secondary-paragraph-color }};
-  }
-  article time {
-  	display: block;
-    margin auto;
-    text-align: center;
-    margin-bottom: 3em;
-  }
+#podcast {
+  width: 100%;
+  height: auto;
+  margin-top: 75px;
+  --bg-white: white;
+  --bg-gray: #f3f3f3;
+  --bg-pink: #f9ede8;
+  --bg-red: #ed0835;
+  background-color: var(--bg-white);
+}
+#podcast div {
+  background-color: var(--bg-white);
+}
+#podcast .section.first {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+}
+#podcast img {
+  width: 350px;
+  height: auto;
+  float: right;
+  margin: 0 0 25px 25px;
+}
+#podcast h1 {
+  font-size: 35px;
+  font-weight: 200;
+}
+#podcast .publisher_time {
+  font-size: 35px;
+  font-weight: 200;
+  margin-bottom: 35px;
+}
+#podcast .article_content {
+  text-align: justify;
+}
+#podcast .article_content > * {
+  text-align: left;
+}
+#podcast .section.first .socials {
+  margin-top: 100px;
+}
+#podcast .section.first .socials svg {
+  height: 15px;
+}
+</style>
+
+<div class="page" id="podcast">
+  <div class="section first">
+      <article class="section_inner">
+        {% if article.image %}
+          <img loading="lazy" width height src="{{ article | img_url: '350x' }}" alt="{{ article.title }}">
+        {% endif %}
+        <h1>{{ article.title }}</h1>
+        <div class="publisher_time">
+          <p>
+            BY THE CONFIDENCE CO - 
+            <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %d, %Y' }}</time>
+          </p>
+        </div>
+        <div class="article_content">
+          {{ article.content }}
+        </div>
+      </article>
+      <div class="socials">
+        {% render 'socials' %}
+      </div>
+  </div>
+<style>
+/*  Comment Styles */
+#podcast .comments {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+}
+#podcast .comments ul {
+  list-style: none;
+  padding: 20px 40px;
+  margin: 0;
+  margin-bottom: 10px;
+  background-color: var(--bg-pink)
+}
+#podcast .comments li {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+#podcast .comments h3 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+#podcast .comments p {
+  margin: 0 0 20px;
+  padding-left: 20px;
+}
+form#comment_form {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+}
+#comment_form h3 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#comment_form fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+#comment_form .name_email_c {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 15px;
+}
+#comment_form .name_email_c input {
+  width: 100%;
+  max-width: 360px;
+  margin: 0;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background-color: var(--bg-pink);
+}
+#comment_form .name_email_c textarea {
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background-color: var(--bg-pink);
+}
+#comment_form button {
+  width: fit-content;
+  margin: 0;
+  padding: 20px;
+  border: none;
+  outline: none;
+  background-color: var(--bg-red);
+  color: var(--bg-white);
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
 </style>
 {% paginate article.comments by 50 %}
-
   {% comment %}
   When a comment has just been submitted, it's not shown right away.
   Shopify needs to wait until it knows for sure that it is not spam to publish it.
@@ -41,46 +172,24 @@
   — was posted without error.
   {% endcomment %}
 
+  <div class="comments">
   {% assign number_of_comments = article.comments_count %}
-
   {% comment %}If a comment was just submitted, and it has no blank fields.{% endcomment %}
   {% if comment and comment.created_at %}
     {% assign number_of_comments = article.comments_count | plus: 1 %}
   {% endif %}
-
-<article>
-  <h1>{{ article.title }}</h1>
-
-  <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
-
-  {{ article.content }}
-</article>
   {% if blog.comments_enabled? and article.comments_count > 0 %}
-    <a href="#">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
-  {% endif %}
-  {% if article.tags.size > 0 %}
-    {% for tag in article.tags %} 
-      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-    {% endfor %}
+    <p>{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</p>
   {% endif %}
 
   {% if blog.comments_enabled? %}
-
-    {% comment %}If a comment was just submitted with no blank field.{% endcomment %}
-    {% if comment and comment.created_at %}
-      {% if blog.moderated? %}
-        Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.
-      {% else %}
-        Your comment was posted successfully! Thank you!
-      {% endif %}
-    {% endif %}
 
     {% if number_of_comments > 0 %}
       <ul>
         {% comment %}If a comment was just submitted with no blank field, let's show it.{% endcomment %}
         {% if comment and comment.created_at %}
           <li id="{{ comment.id }}">
-            <h3>{{ comment.author }} says...</h3>
+            <h3>{{ comment.author }} commented:</h3>
             {{ comment.content }}
             On {{ comment.created_at | date: "%B %d, %Y" }}
           </li>
@@ -88,7 +197,7 @@
         {% comment %}Showing the rest of the comments.{% endcomment %}
         {% for comment in article.comments %}
           <li id="{{ comment.id }}">
-            <h3>{{ comment.author }} says...</h3>
+            <h3>{{ comment.author }} commented:</h3>
             {{ comment.content }}
             On {{ comment.created_at | date: "%B %d, %Y" }}
           </li>
@@ -100,7 +209,8 @@
     {% if paginate.pages > 1 %}
       {{ paginate | default_pagination }}
     {% endif %}
-    
+  </div>
+
     {% comment %}Comment submission form.{% endcomment %}
     {% form "new_comment", article %}
 
@@ -112,30 +222,54 @@
           {{ form.errors | default_errors }}
         {% endif %}
 
-        <label for="comment-author">Name</label>
-        <input required{% if form.errors contains "author" %} class="error"{% endif %} type="text" name="comment[author]" placeholder="Your name" id="comment-author" value="{{ form.author }}" />
-
-        <label for="comment-email">Email</label>
-        <input required{% if form.errors contains "email" %} class="error"{% endif %} type="email" name="comment[email]" placeholder="your@email.com" id="comment-email" value="{{ form.email }}" />
-
-        <label for="comment-body">Message</label>
-        <textarea required{% if form.errors contains "body" %} class="error"{% endif %} name="comment[body]" id="comment-body">{{ form.body }}</textarea>
-
-        <input type="submit" value="Post Comment" /> 
-
+        <div class="name_email_c">
+          <input required{% if form.errors contains "author" %} class="error"{% endif %} type="text" name="comment[author]" placeholder="Name" id="comment-author" value="{{ form.author }}" />
+          <input required{% if form.errors contains "email" %} class="error"{% endif %} type="email" name="comment[email]" placeholder="Email" id="comment-email" value="{{ form.email }}" />
+          <textarea required{% if form.errors contains "body" %} class="error"{% endif %} rows="7" name="comment[body]" placeholder="Comment" id="comment-body">{{ form.body }}</textarea>
+        </div>
+        <p>
+          Please note, comments must be approved before they are published.
+        </p>
+        <button type="submit">Write a comment</button>
+        <p>
+          {% comment %}If a comment was just submitted with no blank field.{% endcomment %}
+          {% if comment and comment.created_at %}
+            {% if blog.moderated? %}
+              Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.
+            {% else %}
+              Your comment was posted successfully! Thank you!
+            {% endif %}
+          {% endif %}
+        </p>
       </fieldset>
       
     {% endform %}
 
   {% endif %}
-
-  {% if blog.next_article or blog.previous_article %}
-    {% if blog.next_article %}
-      {{ 'Next Post' | link_to: blog.next_article }}
-    {% endif %}    
-    {% if blog.previous_article %}
-      {{ 'Previous Post' | link_to: blog.previous_article }}
-    {% endif %}
-  {% endif %}
-
 {% endpaginate %}
+  <style>
+    #podcast .section.instagram_feed {
+      width: 100%;
+      background-color: white;
+      padding: 100px 0;
+    }
+    #podcast .section.instagram_feed .section_inner  {
+      margin: 0 auto;
+      background-color: white;
+      max-width: 950px;
+    }
+    #podcast .section.instagram_feed svg > * {
+      color: var(--bg-red);
+      stroke: var(--bg-red);
+      fill: var(--bg-red);
+    }
+  </style>
+  <div class="section instagram_feed">
+    <div class="section_inner">
+      <h2>Curate your feed with Confidence.</h2>
+      <div class="socials">
+        {% render 'socials' %}
+      </div>
+    </div>
+  </div>
+</div>
