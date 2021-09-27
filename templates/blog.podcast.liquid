@@ -91,10 +91,6 @@
   {% endif %}
 
   <a class="read-more" href="{{ article.url }}">Read more</a>
-
-  {% if blog.comments_enabled? and article.comments_count > 0 %}
-    <a href="{{ article.url }}#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
-  {% endif %}
   
   {% if article.tags.size > 0 %}
     {% for tag in article.tags %} 
