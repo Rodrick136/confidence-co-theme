@@ -46,13 +46,12 @@
   #header_navigation_c li.active a{
     border-bottom: 2px solid rgb(237, 8, 53);
   }
-  #header_navigation_c li.active a {
+  #header_navigation_c li a {
   display: inline-block;
   position: relative;
-  color: #0087ca;
   }
 
-  #header_navigation_c li.active a:after {
+  #header_navigation_c li a:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -60,12 +59,12 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0087ca;
+    background-color: rgb(237, 8, 53);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
 
-  #header_navigation_c li.active a:hover:after {
+  #header_navigation_c li a:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
