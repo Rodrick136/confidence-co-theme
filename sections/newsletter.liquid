@@ -23,6 +23,9 @@
   .newsletter .input-group .input-group__btn, .newsletter .input-group .input-group__btn button{
     width: 100%;
   }
+  .newsletter button {
+    padding: 10px 40px;
+  }
   @media only screen and (max-width: 600px) {
     .newsletter .input-group {
       max-width: 100%;
@@ -51,7 +54,8 @@
     	<img 
                   class="featured_logo_image" 
                   loading="lazy"
-                  width: 100px;
+                  width
+                  height
                   alt="{{ section.settings.image.alt | strip }}"
                   src="{{ section.settings.image | img_url: 'x100' }}"
                 />

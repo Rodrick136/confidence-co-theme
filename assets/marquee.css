@@ -33,6 +33,7 @@
 .simple-marquee-container .marquee-content-items p {
   font-weight: bold;
   font-size: 20px;
+  font-family: orpheuspro, serif;
   margin: 0;
 }
 .simple-marquee-container .marquee-content-items img {

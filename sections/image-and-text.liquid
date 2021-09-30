@@ -16,9 +16,9 @@
   		width: calc(50% - 20px);
     {% endif %}
   }
-  .section-{{ section.id }}.image-text-block img{
+  .section-{{ section.id }}.image-text-block .image_c {
     order: {{ section.settings.image-placement }};
-    width: {{ section.settings.img_width }};
+    width: 50%;
     {% if section.settings.image-placement == "left" %}
    		order: 0;
     	padding-right: 20px;
@@ -30,6 +30,10 @@
     	order: 2;
     	padding-left: 20px;
     {% endif %}
+    text-align: center;
+  }
+  .section-{{ section.id }}.image-text-block img {
+    width: {{ section.settings.img_width }};
   }
   .section-{{- section.id -}}.image-text-block h2, .section-{{section.id}}.image-text-block p{
     text-align: left;
@@ -49,6 +53,8 @@
     list-style: none;
     display: flex;
     margin-bottom:10px;
+    font-size: 14px;
+    letter-spacing: 1px;
   }
   .bullets li::before {
     content: '';
@@ -105,22 +111,24 @@
 <div class="section section-{{ section.id }} image-text-block {{ section.settings.text-block-style }}">
   <div class="page-container">
     {% if section.settings.image != blank %}
-    	<img src="{{section.settings.image | img_url: '1024x' }} ">
+      <div class="image_c">
+        <img loading="lazy" height width src="{{section.settings.image | img_url: '1024x' }} ">
+      </div>
     {% endif %}
     <div class="content">
       <h3>{{ section.settings.pre-title }}</h3>
-      <{{  section.settings.header-size  }} class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</{{section.settings.header-size}}>
+      <{{ section.settings.header-size }} class="{% if section.settings.alternate-header == true %}alternate{% endif %}">{{ section.settings.title }}</{{section.settings.header-size}}>
       {% if section.settings.body != blank %}
       	{{section.settings.body}}
       {% endif %}
-      {% assign bullet_blocks = section.blocks  | where: 'type', 'bullets'%}
+      {% assign bullet_blocks = section.blocks | where: 'type', 'bullets'%}
       <ul class="bullets">
-      {% for block in bullet_blocks%}
-      	<li><strong>{{block.settings.bullet}}<strong></li>
-      {% endfor %}
+        {% for block in bullet_blocks %}
+      	  <li><strong>{{block.settings.bullet}}<strong></li>
+        {% endfor %}
       </ul>
-      {% if section.settings.btn-text != blank%}
-          <a class="btn" href="{{ section.settings.btn-url }}">{{section.settings.btn-text}}</a>
+      {% if section.settings.btn-text != blank %}
+          <a class="btn" href="{{ section.settings.btn-url }}">{{- section.settings.btn-text -}}</a>
       {% endif %}
     </div>
   </div>
@@ -138,6 +146,8 @@
                 <img 
                   class="featured_logo_image" 
                   loading="lazy" 
+                  width
+                  height
                   alt="{{ block.settings.logo_image.alt | strip }}"
                   {% if block.settings.logo_image %}
                     src="{{ block.settings.logo_image | img_url: 'master' }}"
