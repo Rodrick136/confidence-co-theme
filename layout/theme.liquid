@@ -48,16 +48,12 @@
   <script src="{{ 'shopify_common.js' | asset_url }}" defer></script>
   <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
   <script defer>$('html').removeClass('no-js').addClass('js');</script>
-  
-  
   <script src="https://kit.fontawesome.com/73e58ae0b6.js" crossorigin="anonymous" async></script>
 
-  <!--Slick Slider-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.typekit.net/bdq8rka.css">
-
+  {% if template == 'index' %}
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/> 
+  {% endif %}
   
 				
 </head>

@@ -81,8 +81,18 @@
         "id": "h3-size",
         "label": "H3 Size",
         "default": 48,
-        "min": 19,
+        "min": 1,
         "max": 80,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "h3_letter_space",
+        "label": "H3 Letter Spacing",
+        "default": 2,
+        "min": 1,
+        "max": 10,
         "step": 1,
         "unit": "px"
       },
@@ -269,6 +279,16 @@
         "type": "url",
         "label": "Youtube URL",
         "id": "youtube"
+      },
+      {
+        "type": "range",
+        "id": "socials_height",
+        "label": "Height of Social Icons",
+        "default": 16,
+        "min": 1,
+        "max": 25,
+        "step": 1,
+        "unit": "px"
       }
     ]
   }
