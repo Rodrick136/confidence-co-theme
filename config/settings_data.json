@@ -145,7 +145,10 @@
             "type": "content",
             "settings": {
               "title": "Meet Tess",
-              "text": "<p>Graphic Designer & Cat Mom<br\/>Was struggling with gluten intolerance & IBS<\/p><p><strong>SINCE TAKING CONFIDENCE:<br\/><\/strong>“Confidence Co. has helped me live life more normally and eat the foods that I love dearly.” ― Tess<\/p>",
+              "sub_title": "",
+              "story": "",
+              "dosage": "",
+              "quote": "",
               "alt": "Tess Video Testimonial",
               "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Tess_Testimonial_1.mp4?v=1631124221"
             }
@@ -154,7 +157,10 @@
             "type": "content",
             "settings": {
               "title": "Meet Sam",
-              "text": "<p>Business Owner & Dog Mom<br\/>Was struggling with gluten & dairy sensitivities.<\/p><p><strong>SINCE TAKING CONFIDENCE:<\/strong><br\/>“This has been a complete game changer and I finally feel like I can go out and eat the foods I want and not feel like crap the next day.” ― Sam<\/p>",
+              "sub_title": "",
+              "story": "",
+              "dosage": "",
+              "quote": "",
               "alt": "Sam Video Testimonial",
               "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Sam_Testimonial.mp4?v=1631124200"
             }
