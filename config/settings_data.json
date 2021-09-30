@@ -16,8 +16,8 @@
     "secondary-header-color": "#000000",
     "alt-header-color": "#000000",
     "paragraph-font": "raleway_n4",
-    "body-size": 15,
-    "body-line-height": 3,
+    "body-size": 17,
+    "body-line-height": 7,
     "primary-paragraph-color": "#000000",
     "secondary-paragraph-color": "#000000",
     "primary-link": "#e3022b",
@@ -141,28 +141,34 @@
       "16309679374417dcb8": {
         "type": "home___slider",
         "blocks": {
-          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6": {
-            "type": "content",
-            "settings": {
-              "title": "Meet Tess",
-              "text": "<p>Graphic Designer & Cat Mom<br\/>Was struggling with gluten intolerance & IBS<\/p><p><strong>SINCE TAKING CONFIDENCE:<br\/><\/strong>“Confidence Co. has helped me live life more normally and eat the foods that I love dearly.” ― Tess<\/p>",
-              "alt": "Tess Video Testimonial",
-              "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Tess_Testimonial_1.mp4?v=1631124221"
-            }
-          },
           "c65c9ade-f608-4f6d-9bfb-a5e05f349927": {
             "type": "content",
             "settings": {
-              "title": "Meet Sam",
-              "text": "<p>Business Owner & Dog Mom<br\/>Was struggling with gluten & dairy sensitivities.<\/p><p><strong>SINCE TAKING CONFIDENCE:<\/strong><br\/>“This has been a complete game changer and I finally feel like I can go out and eat the foods I want and not feel like crap the next day.” ― Sam<\/p>",
+              "title": "Meet Tess",
+              "sub_title": "Graphic Designer & Cat Mom",
+              "story": "<p>Was struggling with gluten intolerance & IBS.<\/p>",
+              "dosage": "<p>Takes 1 pill with small meals & 2 pills with her largest meal of the day.<\/p>",
+              "quote": "<p>They have helped me live life more normally and eat the foods that I love dearly.<\/p>",
               "alt": "Sam Video Testimonial",
+              "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Tess_Testimonial_1.mp4?v=1631124221"
+            }
+          },
+          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6": {
+            "type": "content",
+            "settings": {
+              "title": "Meet Sam",
+              "sub_title": "Business Owner & Dog Mom",
+              "story": "<p>Was struggling with gluten & dairy sensitivities.<\/p>",
+              "dosage": "<p>Takes 2-3 pills with the largest meal of the day.<\/p>",
+              "quote": "<p>This has been a complete game changer and I finally feel like I can go out and eat the foods I want and not feel like crap the next day.<\/p>",
+              "alt": "Tess Video Testimonial",
               "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Sam_Testimonial.mp4?v=1631124200"
             }
           }
         },
         "block_order": [
-          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6",
-          "c65c9ade-f608-4f6d-9bfb-a5e05f349927"
+          "c65c9ade-f608-4f6d-9bfb-a5e05f349927",
+          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6"
         ],
         "settings": {
           "text-block-style": "primary",
