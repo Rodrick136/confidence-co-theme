@@ -18,7 +18,8 @@
     color: var(--bg-red);
   }
 
-  #blog .article-wrapper{
+  #blog .article-wrapper {
+    padding: 5em 5em;
   	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -28,17 +29,19 @@
   	width: 100%;
     display: block;
   }
-  #blog .article h3 a{
+  #blog .article h3 a {
     text-transform: uppercase;
     text-decoration: none !important;
     font-weight: bold;
     font-size: 18px;
+    letter-spacing: 1.5px;
   }
   
-  #blog .article p{
+  #blog .article p {
+    line-height: 1.5em;
   	margin-top: 0 !important;
   }
-  #blog .article h2{
+  #blog .article h2 {
   	margin-bottom: 10px;
   }
   #blog .pagination{
@@ -48,35 +51,38 @@
     margin-top: 5em;
   }
   
-  .read-more{
+  .read-more {
   	margin-bottom: 3em;
     text-decoration: none;
     text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--bg-red) !important;
   }
   .section.instagram_feed {
-      width: 100%;
-      background-color: white;
-      padding: 100px 0;
-    }
-    .section.instagram_feed .section_inner  {
-      margin: 0 auto;
-      background-color: white;
-      max-width: 1200px;
-    }
-    .section.instagram_feed h2{
+    padding: 5em 5em;
+    width: 100%;
+    background-color: white;
+    padding: 100px 0;
+  }
+  .section.instagram_feed .section_inner  {
+    margin: 0 auto;
+    background-color: white;
+    max-width: 1200px;
+  }
+  .section.instagram_feed h2{
     	margin-bottom: 20px;
-    }
-    #insta_socials{
+  }
+  #insta_socials{
       display: flex;
       background: white;
       align-items: center;
-    }
-    #insta_socials svg{
+  }
+  #insta_socials svg{
       width: 15px;
       color: var(--bg-red);
       margin-right: 10px;
-    }
+  }
   @media only screen and (max-width: 850px) {
     #blog .article-wrapper{
       display: grid;
@@ -114,7 +120,7 @@
   {% if article.excerpt.size > 0 %}
     {{ article.excerpt }}
   {% else %}
-	<p>{{ article.content | strip_html | truncatewords: 120 }}</p>
+	<p>{{ article.content | strip_html | truncatewords: 26 }}</p>
   {% endif %}
 
   <a class="read-more" href="{{ article.url }}">Read more ›</a>
