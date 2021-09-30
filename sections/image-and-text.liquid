@@ -18,7 +18,7 @@
   }
   .section-{{ section.id }}.image-text-block img{
     order: {{ section.settings.image-placement }};
-    width: 50%;
+    width: {{ section.settings.img_width }};
     {% if section.settings.image-placement == "left" %}
    		order: 0;
     	padding-right: 20px;
@@ -31,7 +31,7 @@
     	padding-left: 20px;
     {% endif %}
   }
-  .section-{{  section.id  }}.image-text-block h2, .section-{{section.id}}.image-text-block p{
+  .section-{{- section.id -}}.image-text-block h2, .section-{{section.id}}.image-text-block p{
     text-align: left;
     padding: 20px 0;
     margin: 0;
@@ -120,7 +120,7 @@
       {% endfor %}
       </ul>
       {% if section.settings.btn-text != blank%}
-          <a class="btn" href="{{section.settings.btn-url}}">{{section.settings.btn-text}}</a>
+          <a class="btn" href="{{ section.settings.btn-url }}">{{section.settings.btn-text}}</a>
       {% endif %}
     </div>
   </div>
@@ -215,9 +215,15 @@
        "default": "h2"
     },
 	{
-	   "type": "image_picker",
-       "id": "image",
-       "label": "Image"
+	  "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+	},
+	{
+	  "type": "text",
+    "id": "img_width",
+    "label": "Image Width",
+	  "default": "50%"
 	},
 	{
 	   "type": "text",
