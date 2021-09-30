@@ -16,8 +16,8 @@
     "secondary-header-color": "#000000",
     "alt-header-color": "#000000",
     "paragraph-font": "raleway_n4",
-    "body-size": 15,
-    "body-line-height": 3,
+    "body-size": 17,
+    "body-line-height": 7,
     "primary-paragraph-color": "#000000",
     "secondary-paragraph-color": "#000000",
     "primary-link": "#e3022b",
@@ -145,10 +145,10 @@
             "type": "content",
             "settings": {
               "title": "Meet Tess",
-              "sub_title": "",
-              "story": "",
-              "dosage": "",
-              "quote": "",
+              "sub_title": "Business Owner & Dog Mom",
+              "story": "<p>Was struggling with gluten & dairy sensitivities.<\/p>",
+              "dosage": "<p>Takes 2-3 pills with the largest meal of the day.<\/p>",
+              "quote": "<p>This has been a complete game changer and I finally feel like I can go out and eat the foods I want and not feel like crap the next day.<\/p>",
               "alt": "Tess Video Testimonial",
               "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Tess_Testimonial_1.mp4?v=1631124221"
             }
