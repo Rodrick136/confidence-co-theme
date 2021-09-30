@@ -1,5 +1,5 @@
 <style>
-#podcast {
+#article {
   width: 100%;
   height: auto;
   margin-top: 75px;
@@ -9,48 +9,48 @@
   --bg-red: #ed0835;
   background-color: var(--bg-white);
 }
-#podcast div {
+#article div {
   background-color: var(--bg-white);
 }
-#podcast .section.first {
+#article .section.first {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
 
 }
-#podcast img {
+#article img {
   width: 350px;
   height: auto;
   float: right;
   margin: 0 0 25px 25px;
 }
-#podcast h1 {
+#article h1 {
   font-size: 35px;
   font-weight: 200;
 }
-#podcast .publisher_time {
+#article .publisher_time {
   font-size: 35px;
   font-weight: 200;
   margin-bottom: 35px;
 }
-#podcast .article_content {
+#article .article_content {
   text-align: justify;
 }
-#podcast .article_content h2{
+#article .article_content h2{
   font-size: 25px;
 }
-#podcast .article_content > * {
+#article .article_content > * {
   text-align: left;
 }
-#podcast .section.first .socials {
+#article .section.first .socials {
   margin-top: 100px;
 }
-#podcast .section.first .socials svg {
+#article .section.first .socials svg {
   height: 15px;
 }
 </style>
 
-<div class="page" id="podcast">
+<div class="page" id="article">
   <div class="section first">
       <article class="section_inner">
         {% if article.image %}
@@ -73,29 +73,29 @@
   </div>
 <style>
 /*  Comment Styles */
-#podcast .comments {
+#article .comments {
   width: 100%;
   height: auto;
   max-width: 800px;
   margin: 0 auto;
 }
-#podcast .comments ul {
+#article .comments ul {
   list-style: none;
   padding: 20px 40px;
   margin: 0;
   margin-bottom: 10px;
   background-color: var(--bg-pink)
 }
-#podcast .comments li {
+#article .comments li {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
 }
-#podcast .comments h3 {
+#article .comments h3 {
   margin: 0;
   margin-bottom: 20px;
 }
-#podcast .comments p {
+#article .comments p {
   margin: 0 0 20px;
   padding-left: 20px;
 }
@@ -251,17 +251,17 @@ form#comment_form {
   {% endif %}
 {% endpaginate %}
   <style>
-    #podcast .section.instagram_feed {
+    #article .section.instagram_feed {
       width: 100%;
       background-color: white;
       padding: 100px 0;
     }
-    #podcast .section.instagram_feed .section_inner  {
+    #article .section.instagram_feed .section_inner  {
       margin: 0 auto;
       background-color: white;
       max-width: 950px;
     }
-    #podcast .section.instagram_feed svg > * {
+    #article .section.instagram_feed svg > * {
       color: var(--bg-red);
       stroke: var(--bg-red);
       fill: var(--bg-red);
