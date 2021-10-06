@@ -201,22 +201,10 @@
               "bullet": "No synthetic fillers"
             }
           },
-          "d43ccea7-97be-444f-8e92-44572ba6d8b8": {
-            "type": "bullets",
-            "settings": {
-              "bullet": "Gluten-Free (It actually breaks down gluten!)"
-            }
-          },
           "c609fb7e-cb35-406d-9565-0b673499d22c": {
             "type": "bullets",
             "settings": {
               "bullet": "3rd Party Tested"
-            }
-          },
-          "3102854c-6920-4d35-97fd-27831982db84": {
-            "type": "bullets",
-            "settings": {
-              "bullet": "100% Vegan"
             }
           },
           "325cac02-ab92-486b-8d8e-07246a1bc5e5": {
@@ -225,27 +213,39 @@
               "bullet": "Doctor Formulated"
             }
           },
-          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7": {
-            "type": "bullets",
-            "settings": {
-              "bullet": "No artificial sweeteners"
-            }
-          },
           "0ee7d8e1-e85a-4ab4-859d-9d46184ba417": {
             "type": "bullets",
             "settings": {
               "bullet": "Non-GMO"
             }
+          },
+          "d43ccea7-97be-444f-8e92-44572ba6d8b8": {
+            "type": "bullets",
+            "settings": {
+              "bullet": "Gluten-Free (It actually breaks down gluten!)"
+            }
+          },
+          "3102854c-6920-4d35-97fd-27831982db84": {
+            "type": "bullets",
+            "settings": {
+              "bullet": "100% Vegan"
+            }
+          },
+          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7": {
+            "type": "bullets",
+            "settings": {
+              "bullet": "No artificial sweeteners"
+            }
           }
         },
         "block_order": [
           "f93fa7b2-4530-4be6-9b53-4c69b81135fb",
-          "d43ccea7-97be-444f-8e92-44572ba6d8b8",
           "c609fb7e-cb35-406d-9565-0b673499d22c",
-          "3102854c-6920-4d35-97fd-27831982db84",
           "325cac02-ab92-486b-8d8e-07246a1bc5e5",
-          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7",
-          "0ee7d8e1-e85a-4ab4-859d-9d46184ba417"
+          "0ee7d8e1-e85a-4ab4-859d-9d46184ba417",
+          "d43ccea7-97be-444f-8e92-44572ba6d8b8",
+          "3102854c-6920-4d35-97fd-27831982db84",
+          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7"
         ],
         "settings": {
           "text-block-style": "primary",
