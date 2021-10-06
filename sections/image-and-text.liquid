@@ -45,7 +45,6 @@
   }
   .bullets{
     padding-left: 0;
-  	columns: 2;
     margin-bottom: 2em;
   }
   .bullets li {
@@ -128,6 +127,12 @@
       <li><strong>{{block.settings.bullet}}</strong></li>
         {% endfor %}
       </ul>
+      {% assign bullet_blocks_2 = section.blocks | where: 'type', 'bullet-column-2'%}
+    	<ul class="bullets">
+        {% for block in bullet_blocks_2 %}
+        <li><strong>{{block.settings.bullet}}</strong></li>
+          {% endfor %}
+        </ul>
       {% if section.settings.btn-text != blank %}
           <a class="btn" href="{{ section.settings.btn-url }}">{{- section.settings.btn-text -}}</a>
       {% endif %}
