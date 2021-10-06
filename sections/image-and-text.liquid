@@ -44,9 +44,8 @@
     {% endif %}
   }
   .bullets{
-    display: grid;
     padding-left: 0;
-  	grid-template-columns: 1fr 1fr;
+  	columns: 2;
     margin-bottom: 2em;
   }
   .bullets li {
@@ -125,7 +124,7 @@
       {% assign bullet_blocks = section.blocks | where: 'type', 'bullets'%}
       <ul class="bullets">
         {% for block in bullet_blocks %}
-      <li><strong>{{block.settings.bullet}}</strong></li>
+      	  <li><strong>{{block.settings.bullet}}<strong></li>
         {% endfor %}
       </ul>
       {% if section.settings.btn-text != blank %}
