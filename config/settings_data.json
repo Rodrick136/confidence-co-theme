@@ -219,20 +219,20 @@
               "bullet": "Non-GMO"
             }
           },
-          "d43ccea7-97be-444f-8e92-44572ba6d8b8": {
-            "type": "bullets",
+          "b95366ba-163e-419e-a5a8-32c9da15f8ee": {
+            "type": "bullet-column-2",
             "settings": {
               "bullet": "Gluten-Free (It actually breaks down gluten!)"
             }
           },
-          "3102854c-6920-4d35-97fd-27831982db84": {
-            "type": "bullets",
+          "f947727a-6674-4b21-9881-484604857594": {
+            "type": "bullet-column-2",
             "settings": {
               "bullet": "100% Vegan"
             }
           },
-          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7": {
-            "type": "bullets",
+          "6e54d845-d73a-4e60-b280-ca78d5af7552": {
+            "type": "bullet-column-2",
             "settings": {
               "bullet": "No artificial sweeteners"
             }
@@ -243,9 +243,9 @@
           "c609fb7e-cb35-406d-9565-0b673499d22c",
           "325cac02-ab92-486b-8d8e-07246a1bc5e5",
           "0ee7d8e1-e85a-4ab4-859d-9d46184ba417",
-          "d43ccea7-97be-444f-8e92-44572ba6d8b8",
-          "3102854c-6920-4d35-97fd-27831982db84",
-          "c6d1dd81-06d6-4d8b-8125-88b42e9e39d7"
+          "b95366ba-163e-419e-a5a8-32c9da15f8ee",
+          "f947727a-6674-4b21-9881-484604857594",
+          "6e54d845-d73a-4e60-b280-ca78d5af7552"
         ],
         "settings": {
           "text-block-style": "primary",
