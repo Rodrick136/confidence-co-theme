@@ -295,8 +295,11 @@
   text-transform: uppercase;
   letter-spacing: 1px;
  }
- #product > div.section.fifth .card .description {
+ #product > div.section.fifth .card .description:nth-child(-n+3) {
   min-height: 175px;
+ }
+ #product > div.section.fifth .card .description:nth-child(-4n+6) {
+  min-height: 200px;
  }
  #product > div.section.fifth .card .description p {
   line-height: 25px;
