@@ -166,11 +166,24 @@
               "alt": "Tess Video Testimonial",
               "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0600\/0069\/8575\/files\/Sam_Testimonial.mp4?v=1631124200"
             }
+          },
+          "b775164e-a9a8-4a3f-b550-3b63c7212f7c": {
+            "type": "content",
+            "settings": {
+              "title": "Meet Alex",
+              "sub_title": "Astrologer",
+              "story": "<p>Was Struggling with Gluten, Meat, & Dairy Sensitivity<\/p>",
+              "dosage": "<p>1-2 pills with biggest meal of the day<\/p>",
+              "quote": "<p>“The Confidence Co saved my life when transitioning foods and changing my diet to be more varied and inclusive.”<\/p>",
+              "alt": "",
+              "video": ""
+            }
           }
         },
         "block_order": [
           "c65c9ade-f608-4f6d-9bfb-a5e05f349927",
-          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6"
+          "c93e62c9-88d8-4b00-9449-ffd8d97d62b6",
+          "b775164e-a9a8-4a3f-b550-3b63c7212f7c"
         ],
         "settings": {
           "text-block-style": "primary",
